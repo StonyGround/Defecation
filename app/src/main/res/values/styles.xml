@@ -1,0 +1,43 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Base application theme. @android:style/Theme.Holo.NoActionBar.Fullscreen-->
+
+
+
+
+    <style name="AnimationActivity" parent="@android:style/Animation.Activity" mce_bogus="1">
+
+    <item name="android:activityOpenEnterAnimation">@anim/push_right_in</item>
+
+<!--<item name="android:activityOpenExitAnimation">@anim/push_left_out</item>-->
+
+<!--<item name="android:activityCloseEnterAnimation">@anim/push_left_in</item>-->
+
+<item name="android:activityCloseExitAnimation">@anim/push_right_out</item>
+
+    </style>
+
+    <style name="PopupAnimation">
+        <item name="android:windowExitAnimation">@anim/push_right_out</item>
+        <item name="android:windowEnterAnimation">@anim/push_right_in</item>
+    </style>
+
+
+
+    <style name="AppTheme" parent="@android:style/Theme.Holo.NoActionBar.Fullscreen">
+        <item name="android:windowAnimationStyle">@style/AnimationActivity</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.Translucent" parent="AppTheme">
+
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+        <item name="android:windowIsTranslucent">true</item>
+
+    </style>
+    
+    
+
+</resources>

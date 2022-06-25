@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/control_bg"
+    >
+    <!--手动设置-->
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginLeft="70dp"
+        android:layout_marginRight="70dp"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="5dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardPreventCornerOverlap="false"
+        app:cardUseCompatPadding="false"
+        app:contentPadding="0dp">
+    <RelativeLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+         >
+
+       <include layout="@layout/layout_temper"/>
+
+
+    </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+    <LinearLayout
+        android:id="@+id/LinearLayout_left_auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="100dp"
+        android:layout_marginRight="100dp"
+        android:orientation="horizontal">
+    <LinearLayout
+
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/LinearLayout_water_press"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <ImageView
+                android:id="@+id/ImageView_water_press"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:src="@mipmap/water_press_0"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="水压"
+                android:layout_gravity="center_horizontal"
+                android:textSize="30dp"
+                android:textColor="@color/black"/>
+
+        </LinearLayout>
+        <Space
+            android:layout_width="10dp"
+            android:layout_height="50dp"/>
+
+        <LinearLayout
+            android:id="@+id/LinearLayout_warm_air"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <ImageView
+                android:id="@+id/ImageView_water_air"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:src="@mipmap/warm_air_0"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="暖风"
+                android:layout_gravity="center_horizontal"
+                android:textSize="30dp"
+                android:textColor="@color/black"/>
+        </LinearLayout>
+    </LinearLayout>
+        <Space
+            android:layout_width="50dp"
+            android:layout_height="10dp"/>
+    <LinearLayout
+
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+        <LinearLayout
+            android:id="@+id/LinearLayout_water_temper"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <ImageView
+                android:id="@+id/ImageView_water_temper"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:src="@mipmap/water_temper_0"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="水温"
+                android:layout_gravity="center_horizontal"
+                android:textSize="30dp"
+                android:textColor="@color/black"/>
+        </LinearLayout>
+
+        <Space
+            android:layout_width="10dp"
+            android:layout_height="50dp"/>
+        <LinearLayout
+            android:id="@+id/LinearLayout_massage"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <ImageView
+                android:id="@+id/ImageView_massage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:src="@mipmap/massage_0"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="按摩"
+                android:layout_gravity="center_horizontal"
+                android:textSize="30dp"
+                android:textColor="@color/black"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    </LinearLayout>
+
+
+
+
+
+
+ <TextView
+     android:id="@+id/TextView_more"
+     android:layout_width="match_parent"
+     android:layout_height="80dp"
+     android:textSize="30dp"
+     android:gravity="center"
+     android:layout_alignParentBottom="true"
+     android:layout_marginBottom="100dp"
+     android:layout_marginLeft="100dp"
+     android:layout_marginRight="100dp"
+     android:textAlignment="center"
+     android:textColor="@drawable/more_text_btn_selector"
+     android:background="@drawable/more_btn_selector"
+
+     android:text="更多设置"/>
+
+</RelativeLayout>

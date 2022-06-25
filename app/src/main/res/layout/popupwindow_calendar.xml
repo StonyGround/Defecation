@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/coverRl"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/transparent"
+     >
+
+    <LinearLayout
+        android:id="@+id/ll_popup"
+        android:layout_width="700dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_centerInParent="true"
+        android:background="@color/white"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp">
+			
+            <TextView
+                android:id="@+id/popupwindow_calendar_month"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:lines="1"
+                android:textColor="#aa564b4b"
+                android:textSize="24sp"
+                android:text="2020年07月"/>
+            
+            <RelativeLayout
+                android:id="@+id/popupwindow_calendar_last_month"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                android:layout_toLeftOf="@+id/popupwindow_calendar_month" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="上一月"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:padding="10dp"
+                    android:gravity="center"
+                    android:background="@drawable/button_date_select"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentStart="true" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/popupwindow_calendar_next_month"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                android:layout_toRightOf="@+id/popupwindow_calendar_month" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="下一月"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:padding="10dp"
+                    android:gravity="center"
+                    android:background="@drawable/button_date_select" />
+            </RelativeLayout>
+        </RelativeLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/divide_color"
+            android:layout_marginBottom="10dp"/>
+
+        <com.kjy.care.widget.KCalendar
+            android:id="@+id/popupwindow_calendar"
+            android:layout_width="match_parent"
+            android:background="@color/white"
+            android:layout_height="380dp"
+
+        />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/divide_color" />
+
+        <Button
+            android:id="@+id/popupwindow_calendar_bt_enter"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/gary_ripple"
+            android:text="完 成"
+            android:layout_gravity="center"
+            android:textColor="#aa564b4b"
+            android:textSize="22sp"/>
+    </LinearLayout>
+
+</RelativeLayout>

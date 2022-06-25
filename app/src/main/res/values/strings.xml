@@ -1,0 +1,11 @@
+<resources>
+<!--    <string name="app_name">健康检测</string>-->
+    <string name="start_floatingBall">开启悬浮球功能</string>
+    <string name="font_size_24">24sp</string>
+
+
+
+
+    <string name="time_format_top">%1$dh%2$dmin</string>
+    <string name="file_provider">com.jstyle.sleep.commom.fileprovider</string>
+</resources>

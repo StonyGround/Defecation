@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/RelativeLayout_app"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.kjy.care.activity.MainActivity"
+    android:background="@color/colorBg">
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:src="@mipmap/bg"
+        android:layout_marginBottom="70dp"/>
+
+
+    <!--顶部层-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/RelativeLayout_top"
+        android:background="@color/white">
+
+        <fragment
+            android:id="@+id/fragment_top"
+            android:name="com.kjy.care.activity.fragment.TopFragment"
+            android:layout_width="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_height="50dp"/>
+    </RelativeLayout>
+
+
+
+
+    <RelativeLayout
+        android:id="@+id/RelativeLayout_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/RelativeLayout_top"
+         >
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:paddingLeft="40dp"
+                android:paddingRight="40dp"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/LinearLayout_back"
+                    android:onClick="onClick">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:adjustViewBounds="true"
+                    android:layout_gravity="center_vertical"
+                    android:src="@mipmap/back_2"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="设备管理"
+                    android:layout_gravity="center_vertical"
+                    android:textSize="30dp"
+                    android:textColor="@color/black"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="40dp"
+                android:orientation="vertical">
+
+
+                <ListView
+                    android:id="@+id/ListView_bind_device"
+                    android:layout_width="match_parent"
+                    android:dividerHeight="20dp"
+                    android:layout_height="match_parent"/>
+
+
+
+            </LinearLayout>
+
+
+
+
+
+
+   </LinearLayout>
+
+
+
+
+        <RelativeLayout
+            android:id="@+id/RelativeLayout_loading"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:onClick="onClick"
+            android:visibility="gone"
+            android:background="@color/black_transparent_50">
+
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"/>
+        </RelativeLayout>
+
+
+
+
+        <RelativeLayout
+            android:id="@+id/RelativeLayout_search_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:onClick="onClick"
+            android:visibility="gone"
+            android:padding="40dp"
+            android:background="@color/black_transparent">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:paddingLeft="0dp"
+                android:paddingRight="0dp"
+                android:layout_centerHorizontal="true"
+                android:layout_height="match_parent">
+                <Button
+                    android:id="@+id/Button_cancel"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:layout_alignParentBottom="true"
+                    android:background="@drawable/blue_ripple"
+                    android:text="取消"/>
+                <ListView
+                    android:id="@+id/ListView_search_device"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/transparent"
+                    android:dividerHeight="20dp"
+                    android:divider="@color/transparent"
+                    android:layout_above="@id/Button_cancel"
+                    />
+
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+
+
+
+
+    </RelativeLayout>
+
+
+
+</RelativeLayout>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+   >
+    <LinearLayout
+        android:id="@+id/LinearLayout_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        >
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:id="@+id/TextView_id"
+        android:textSize="@dimen/font_size_26"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:text="编号"/>
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:id="@+id/TextView_name"
+        android:textSize="@dimen/font_size_26"
+        android:textColor="@color/white"
+        android:textAlignment="center"
+        android:text="名称"/>
+
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:id="@+id/TextView_type"
+        android:textSize="@dimen/font_size_26"
+        android:textColor="@color/white"
+        android:textAlignment="center"
+        android:text="类型"/>
+
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:id="@+id/TextView_price"
+        android:textSize="@dimen/font_size_26"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:text="价格"/>
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:id="@+id/TextView_time"
+        android:textSize="@dimen/font_size_26"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:text="时间"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignBottom="@id/LinearLayout_main"
+        android:background="@color/gray"/>
+
+</RelativeLayout>

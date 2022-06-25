@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/RelativeLayout_app"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.kjy.care.activity.MainActivity"
+    android:background="@color/colorBg">
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:src="@mipmap/bg"
+        android:layout_marginBottom="70dp"/>
+
+
+    <!--顶部层-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/RelativeLayout_top"
+        android:background="@color/white">
+
+        <fragment
+            android:id="@+id/fragment_top"
+            android:name="com.kjy.care.activity.fragment.TopFragment"
+            android:layout_width="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_height="50dp"/>
+    </RelativeLayout>
+
+
+
+
+    <RelativeLayout
+        android:id="@+id/RelativeLayout_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/RelativeLayout_top"
+         >
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:paddingLeft="40dp"
+                android:paddingRight="40dp"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/LinearLayout_back"
+                    android:onClick="onClick">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:adjustViewBounds="true"
+                    android:layout_gravity="center_vertical"
+                    android:src="@mipmap/back_2"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="帮助"
+                    android:layout_gravity="center_vertical"
+                    android:textSize="30dp"
+                    android:textColor="@color/black"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollbars="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="40dp"
+                android:orientation="vertical">
+
+
+
+
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"/>
+
+
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="3dp"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardPreventCornerOverlap="false"
+                    app:cardUseCompatPadding="false"
+                    app:contentPadding="0dp">
+                    <RelativeLayout
+                        android:id="@+id/RelativeLayout_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="30dp"
+                        android:paddingTop="30dp"
+                        android:onClick="onClick"
+                        >
+                        <TextView
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:text="操作知道"
+                            android:textColor="@color/black"
+                            android:textSize="26dp"
+                            android:layout_marginLeft="50dp"
+
+                            />
+
+
+
+
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+
+
+
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"/>
+
+
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="3dp"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardPreventCornerOverlap="false"
+                    app:cardUseCompatPadding="false"
+                    app:contentPadding="0dp">
+                    <RelativeLayout
+                        android:id="@+id/RelativeLayout_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="30dp"
+                        android:paddingTop="30dp"
+                        android:onClick="onClick"
+                        >
+                        <TextView
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:text="保养和维护"
+                            android:textColor="@color/black"
+                            android:textSize="26dp"
+                            android:layout_marginLeft="50dp"
+
+                            />
+
+
+
+
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"/>
+
+
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="3dp"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardPreventCornerOverlap="false"
+                    app:cardUseCompatPadding="false"
+                    app:contentPadding="0dp">
+                    <RelativeLayout
+                        android:id="@+id/RelativeLayout_3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="30dp"
+                        android:paddingTop="30dp"
+                        android:onClick="onClick"
+                        >
+                        <TextView
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:text="使用说明"
+                            android:textColor="@color/black"
+                            android:textSize="26dp"
+                            android:layout_marginLeft="50dp"
+
+                            />
+
+
+
+
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+
+
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"/>
+
+
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="3dp"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardPreventCornerOverlap="false"
+                    app:cardUseCompatPadding="false"
+                    app:contentPadding="0dp">
+                    <RelativeLayout
+
+                        android:id="@+id/RelativeLayout_4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="30dp"
+                        android:paddingTop="30dp"
+                        android:onClick="onClick"
+                        >
+                        <TextView
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:text="瘫痪卧床病人如何护理？"
+                            android:textColor="@color/black"
+                            android:textSize="26dp"
+                            android:layout_marginLeft="50dp"
+
+                            />
+
+
+
+
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"/>
+
+
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="3dp"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardPreventCornerOverlap="false"
+                    app:cardUseCompatPadding="false"
+                    app:contentPadding="0dp">
+                    <RelativeLayout
+                        android:id="@+id/RelativeLayout_5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="30dp"
+                        android:paddingTop="30dp"
+                        android:onClick="onClick"
+                        >
+                        <TextView
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:text="偏瘫老人的护理要点"
+                            android:textColor="@color/black"
+                            android:textSize="26dp"
+                            android:layout_marginLeft="50dp"
+
+                            />
+
+
+
+
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"/>
+
+
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="3dp"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardPreventCornerOverlap="false"
+                    app:cardUseCompatPadding="false"
+                    app:contentPadding="0dp">
+                    <RelativeLayout
+                        android:id="@+id/RelativeLayout_6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="30dp"
+                        android:paddingTop="30dp"
+                        android:onClick="onClick"
+
+                        >
+                        <TextView
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:text="功能介绍"
+                            android:textColor="@color/black"
+                            android:textSize="26dp"
+                            android:layout_marginLeft="50dp"
+
+                            />
+
+
+
+
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+
+            </ScrollView>
+
+
+
+
+   </LinearLayout>
+
+
+
+
+
+
+
+
+    </RelativeLayout>
+
+
+
+</RelativeLayout>

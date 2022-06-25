@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="alert_array">
+        <item>High Heart Rate!</item>
+        <item>Low Heart Rate!</item>
+        <item>High Breath Rate!</item>
+        <item>Low Breath Rate!</item>
+    </array>
+    <array name="array_topic">
+        <item>Product(Battery,Function,etc)</item>
+        <item>App(Bluetooth Connection,Sync,Setting,etc)</item>
+        <item>Others</item>
+    </array>
+    <array name="change_icon">
+        <item>Select from Album</item>
+        <item>Take Photos</item>
+    </array>
+    <array name="device_filter">
+        <item>1657</item>
+        <item>1742</item>
+        <item>1809</item>
+        <item>1812-</item>
+        <item>1812_</item>
+        <item>j1951nb</item>
+    </array>
+    <array name="set_userinfo_tips">
+        <item>Pick A Name for yourself</item>
+        <item>Complete Your Profile</item>
+    </array>
+    <array name="set_userinfo_title">
+        <item>Gender</item>
+        <item>Height(cm)</item>
+        <item>Weight(kg)</item>
+        <item>Age</item>
+    </array>
+    <array name="sleep_breathrate_tips">
+        <item>睡眠过程中呼吸率偏高，Keep the room temperature below 28 degrees, with enough oxygen, quiet and good indoor shading; use the comfortable pillow and bedding;keep a good mood.</item>
+        <item>睡眠过程中呼吸率正常。</item>
+        <item>睡眠过程中呼吸率偏低，Room temperature should not be too low, mild sound and weak light help you conform the surrounding environment more quickly after awake.</item>
+    </array>
+    <array name="sleep_deepsleeptime_tips">
+        <item>Deep sleep time is not enough, you should bulid a considerable exercise plan, for example, 10000 steps walk per day, wont too tired but useful Drink a glass of milk before going to bed can help improving the quality of sleep.</item>
+        <item>Deep sleep time is enough ,the body and brain get a good rest,please keep on</item>
+        <item>Deep sleep time is too long, you should increase some daytime exercise and bulid a considerable exercise plan, for example, 10000 steps walk per day Reducing unnecessary sleep is very important so that you body can full of energy.</item>
+    </array>
+    <array name="sleep_detailContent_array">
+        <item>Parameter</item>
+        <item>Rest Time</item>
+        <item>Sleep Time</item>
+        <item>REM Sleep</item>
+        <item>Deep Sleep</item>
+        <item>Light Sleep</item>
+        <item>Fall Asleep</item>
+        <item>Sleep Ratio</item>
+        <item>Heart Rate</item>
+        <item>Breath Rate</item>
+    </array>
+    <array name="sleep_detailLimit_array">
+        <item>Reference</item>
+        <item>6.5-10H</item>
+        <item>5.5-9H</item>
+        <item>0.8-1.8H</item>
+        <item>1.5-3.0H</item>
+        <item>2.5-4.8H</item>
+        <item>&lt;20min</item>
+        <item>75-95%</item>
+        <item>55-80</item>
+        <item>10-18</item>
+    </array>
+    <array name="sleep_efficiency_tips">
+        <item>Poor sleep, please rest your whole body, don’t do anything else before you sleep, just lay on the bed and relax. Be nice to yourself! Don’;t have too much pressure, a healthy body is the key to slove all the problems</item>
+        <item>Normal sleep, don’t do anything else before you sleep. Calm down, good sleep helps you keep health both physical and mental.</item>
+        <item>Good sleep, this is conducive to physical and mental health and high efficiency in working, do maintain the good sleep habits.</item>
+    </array>
+    <array name="sleep_heartrate_tips">
+        <item>静息心率和白天平均心率相比高，Keep the room temperature below 28 degrees, with enough oxygen, quiet and good indoor shading; use the comfortable pillow and bedding;keep a good mood.</item>
+        <item>静息心率和白天平均心率相比相同，Keep the room temperature below 28 degrees, with enough oxygen, quiet and good indoor shading; use the comfortable pillow and bedding;keep a good mood.</item>
+        <item>静息心率正常。</item>
+        <item>Room temperature should not be too low, mild sound and weak light help you conform the surrounding environment more quickly after awake.</item>
+    </array>
+    <array name="sleep_time_tips">
+        <item>Sleep time is not enough, you should ensure 6-8 hours sleeping time per day and please arrange a reasonable sleep plan, which contributes to physical and mental health and efficient working states.</item>
+        <item>Enough sleep, please maintain 6-8 hours a day of sleep habits.</item>
+        <item>Sleep time is too long, meet 6-8 hours of sleeping time, plus arrange the work and exercise reasonablely is helpful for the physical and mental health.</item>
+    </array>
+    <array name="sleep_tosleeptime_tips">
+        <item>Sleep fast, which is helpful to maintain high quality sleep quality, please maintain a good sleepping habits.</item>
+        <item>Fall asleep in general, don’t do anything else before you sleep,sleep fast is helpful for the body recovery.</item>
+        <item>Difficult to fall asleep, don’t have too much pressure,don’t do anything else before you sleep, just relax and go get some sleep.</item>
+    </array>
+    <array name="week">
+        <item>Sun</item>
+        <item>Mon</item>
+        <item>Tue</item>
+        <item>Wed</item>
+        <item>Thu</item>
+        <item>Fri</item>
+        <item>Sat</item>
+    </array>
+    <array name="week_chart">
+        <item>Mon</item>
+        <item>Tue</item>
+        <item>Wed</item>
+        <item>Thu</item>
+        <item>Fri</item>
+        <item>Sat</item>
+        <item>Sun</item>
+    </array>
+    <array name="week_sleep">
+        <item>Poor</item>
+        <item>Common</item>
+        <item>Well</item>
+        <item>Good</item>
+    </array>
+</resources>

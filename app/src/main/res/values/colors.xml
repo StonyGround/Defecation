@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="transparent">#00000000</color>
+
+    <color name="colorBg">#fff7f2</color>
+    <color name="black_gray">#434343</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="black_transparent">#86000000</color>
+    <color name="black_transparent_50">#50000000</color>
+    <color name="black_333">#333333</color>
+    <color name="black_666">#666666</color>
+    <color name="black_999">#999999</color>
+    <color name="black_aaa">#aaaaaa</color>
+
+    <color name="orange_2">#FF9900</color>
+
+    <color name="blue">#0066df</color>
+    <color name="blue_light">#4180F8</color>
+
+    <color name="blue_sky">#00b7ff</color>
+    <color name="green_dark">#2C9602</color>
+    <color name="green">#2fb500</color>
+
+    <color name="orange">#e18329</color>
+
+
+    <color name="orange_yellow">#f7a619</color>
+
+    <color name="red">#e52800</color>
+
+    <color name="green_deep">#008329</color>
+
+    <color name="gray">#EEEEEE</color>
+
+
+    <color name="canlendar_text_color">#323232</color>
+    <color name="black_3">#cd000000</color>
+    <color name="divide_color">#dbdbdb</color>
+    <color name="orange_press">#D5872D</color>
+
+
+
+    <color name="week_Sleep_color">#fdd71e</color>
+    <color name="week_chart_bg_color">#2f3f73</color>
+    <color name="week_deep_Sleep_color">#9bf519</color>
+    <color name="week_sleep_bad">#f89724</color>
+    <color name="week_sleep_good">#1ff792</color>
+    <color name="week_sleep_mid">#fdd71e</color>
+    <color name="week_sleep_normal">#3dbfee</color>
+
+    <color name="month_Sleep_color">#3dbfee</color>
+    <color name="month_deep_Sleep_color">#516dcd</color>
+
+
+    <color name="day_breath_buttonColor">#1ff792</color>
+    <color name="day_breath_lineColor">#516dcd</color>
+    <color name="day_data_background">#27335c</color>
+    <color name="day_data_divider">#688afd</color>
+    <color name="day_heart_buttonColor">#f94d69</color>
+    <color name="day_heart_lineColor">#f94d67</color>
+    <color name="day_sleepAdvice_buttonColor">#516dcd</color>
+    <color name="day_sleepDetail_buttonColor">#eac418</color>
+    <color name="day_turnover_buttonColor">#1190f4</color>
+
+
+    <color name="real_breath_lineColor">#20ed8f</color>
+
+</resources>
