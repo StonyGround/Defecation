@@ -1,1275 +1,1204 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/RelativeLayout_app"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:id="@+id/RelativeLayout_app"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  tools:context="com.kjy.care.activity.MainActivity"
+  android:background="@color/colorBg">
+
+
+  <ImageView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:layout_alignParentRight="true"
+    android:src="@mipmap/bg"
+    android:layout_marginBottom="70dp" />
+
+
+  <!--顶部层-->
+  <RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:id="@+id/RelativeLayout_top"
+    android:background="@color/white">
+
+    <fragment
+      android:id="@+id/fragment_top"
+      android:name="com.kjy.care.activity.fragment.TopFragment"
+      android:layout_width="match_parent"
+      android:layout_alignParentTop="true"
+      android:layout_height="50dp" />
+  </RelativeLayout>
+
+  <!--底部层-->
+  <RelativeLayout
+    android:id="@+id/RelativeLayout_bottom"
+    android:layout_width="match_parent"
+    android:layout_height="243px"
+    android:layout_alignParentBottom="true">
+    <ImageView
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:src="@mipmap/bottom"
+      android:scaleType="fitXY" />
+
+
+    <RelativeLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent">
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="30dp"
+        android:gravity="center">
+
+        <Space
+          android:layout_width="30dp"
+          android:layout_height="wrap_content" />
+        <ImageView
+          android:id="@+id/ImageView_stop"
+          android:layout_width="0dp"
+          android:layout_weight="1"
+          android:layout_height="wrap_content"
+          android:adjustViewBounds="true"
+          android:onClick="onClick"
+          android:src="@mipmap/stop_0" />
+        <Space
+          android:layout_width="30dp"
+          android:layout_height="wrap_content" />
+
+
+        <ImageView
+          android:id="@+id/ImageView_auto"
+          android:layout_width="0dp"
+          android:layout_weight="1"
+          android:layout_height="wrap_content"
+          android:adjustViewBounds="true"
+          android:onClick="onClick"
+          android:src="@mipmap/auto_1" />
+        <Space
+          android:layout_width="30dp"
+          android:layout_height="wrap_content" />
+
+        <ImageView
+          android:id="@+id/ImageView_control"
+          android:onClick="onClick"
+          android:layout_width="0dp"
+          android:layout_weight="1"
+          android:layout_height="wrap_content"
+          android:adjustViewBounds="true"
+          android:src="@mipmap/control_0" />
+
+        <Space
+          android:layout_width="30dp"
+          android:layout_height="wrap_content" />
+      </LinearLayout>
+    </RelativeLayout>
+
+  </RelativeLayout>
+
+
+  <RelativeLayout
+    android:id="@+id/RelativeLayout_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.kjy.care.activity.MainActivity"
-    android:background="@color/colorBg">
+    android:layout_below="@id/RelativeLayout_top"
+    android:layout_above="@id/RelativeLayout_bottom">
 
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:src="@mipmap/bg"
-        android:layout_marginBottom="70dp"/>
-
-
-    <!--顶部层-->
     <RelativeLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent">
+
+      <!--图标层-->
+      <!--
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginLeft="120dp"
+          android:layout_marginRight="200dp"
+          android:layout_marginTop="30dp"
+          android:orientation="horizontal">
+
+
+          <RelativeLayout
+              android:layout_width="0dp"
+              android:layout_weight="1"
+              android:layout_height="wrap_content">
+              <LinearLayout
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:orientation="vertical">
+                  <ImageView
+
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:adjustViewBounds="true"
+                      android:src="@mipmap/water_press_1"
+                      />
+                  <TextView
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:text="污水罐未装"
+                      android:textSize="14dp"
+                      android:textColor="@color/black"/>
+
+              </LinearLayout>
+          </RelativeLayout>
+
+          <RelativeLayout
+              android:layout_width="0dp"
+              android:layout_weight="1"
+              android:layout_height="wrap_content">
+              <LinearLayout
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:orientation="vertical">
+                  <ImageView
+
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:adjustViewBounds="true"
+                      android:src="@mipmap/water_press_1"
+
+                      />
+                  <TextView
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:text="坐便器未装"
+                      android:textSize="14dp"
+
+                      android:textColor="@color/black"/>
+
+              </LinearLayout>
+          </RelativeLayout>
+          <RelativeLayout
+              android:layout_width="0dp"
+              android:layout_weight="1"
+              android:layout_height="wrap_content">
+              <LinearLayout
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:orientation="vertical">
+                  <ImageView
+
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:adjustViewBounds="true"
+                      android:src="@mipmap/water_press_1"
+
+                      />
+                  <TextView
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:text="负压管有水"
+                      android:textSize="14dp"
+                      android:textColor="@color/black"/>
+
+              </LinearLayout>
+          </RelativeLayout>
+          <RelativeLayout
+              android:layout_width="0dp"
+              android:layout_weight="1"
+              android:layout_height="wrap_content">
+              <LinearLayout
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:orientation="vertical">
+                  <ImageView
+
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:adjustViewBounds="true"
+                      android:src="@mipmap/water_press_1"
+
+                      />
+                  <TextView
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:text="检测漏水"
+                      android:textSize="14dp"
+                      android:textColor="@color/black"/>
+
+              </LinearLayout>
+          </RelativeLayout>
+          <RelativeLayout
+              android:layout_width="0dp"
+              android:layout_weight="1"
+              android:layout_height="wrap_content">
+              <LinearLayout
+
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:orientation="vertical">
+                  <ImageView
+
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:adjustViewBounds="true"
+                      android:src="@mipmap/water_press_1"
+
+                      />
+                  <TextView
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:text="坐便器水满"
+                      android:textSize="14dp"
+                      android:textColor="@color/black"/>
+
+              </LinearLayout>
+          </RelativeLayout>
+          <RelativeLayout
+              android:layout_width="0dp"
+              android:layout_weight="1"
+              android:layout_height="wrap_content">
+              <LinearLayout
+
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:orientation="vertical">
+                  <ImageView
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:adjustViewBounds="true"
+                      android:src="@mipmap/water_press_1"
+                      />
+                  <TextView
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:text="被褥湿"
+                      android:textSize="14dp"
+                      android:textColor="@color/black"/>
+
+              </LinearLayout>
+          </RelativeLayout>
+      </LinearLayout>
+      -->
+
+
+      <!--中间层-->
+      <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:id="@+id/RelativeLayout_top"
-        android:background="@color/white">
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_marginBottom="30dp"
+        android:layout_marginTop="200dp">
 
-        <fragment
-            android:id="@+id/fragment_top"
-            android:name="com.kjy.care.activity.fragment.TopFragment"
+        <!--自动-->
+        <LinearLayout
+          android:id="@+id/LinearLayout_left_auto"
+          android:layout_width="300dp"
+          android:layout_height="match_parent"
+          android:gravity="center_horizontal"
+          android:orientation="vertical">
+
+          <RelativeLayout
+            android:id="@+id/LinearLayout_water_press"
+            android:onClick="onClick"
             android:layout_width="match_parent"
-            android:layout_alignParentTop="true"
-            android:layout_height="50dp"/>
-    </RelativeLayout>
+            android:layout_height="0dp"
+            android:layout_weight="1">
 
-    <!--底部层-->
-    <RelativeLayout
-        android:id="@+id/RelativeLayout_bottom"
-        android:layout_width="match_parent"
-        android:layout_height="243px"
-        android:layout_alignParentBottom="true">
-        <ImageView
+
+            <ImageView
+              android:id="@+id/ImageView_water_press"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginTop="20dp"
+              android:layout_marginBottom="20dp"
+              android:layout_marginStart="20dp"
+              android:layout_marginEnd="20dp"
+              android:adjustViewBounds="true"
+              android:src="@mipmap/water_press_0" />
+            <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="水压"
+              android:textSize="30dp"
+              android:layout_marginLeft="20dp"
+              android:layout_centerVertical="true"
+              android:ems="1"
+              android:textColor="@color/black" />
+
+
+          </RelativeLayout>
+          <Space
+            android:layout_width="wrap_content"
+            android:layout_height="10dp" />
+          <RelativeLayout
+            android:id="@+id/LinearLayout_water_temper"
+            android:onClick="onClick"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@mipmap/bottom"
-            android:scaleType="fitXY"
-            />
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <ImageView
+              android:id="@+id/ImageView_water_temper"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginTop="20dp"
+              android:layout_marginBottom="20dp"
+              android:layout_marginStart="20dp"
+              android:layout_marginEnd="20dp"
+              android:adjustViewBounds="true"
+              android:src="@mipmap/water_temper_0" />
+            <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="水温"
+              android:layout_gravity="center_horizontal"
+              android:ems="1"
+              android:layout_centerVertical="true"
+              android:textSize="30dp"
+              android:textColor="@color/black"
+              android:layout_marginLeft="20dp" />
+          </RelativeLayout>
+          <Space
+            android:layout_width="wrap_content"
+            android:layout_height="10dp" />
+          <RelativeLayout
+            android:id="@+id/LinearLayout_warm_air"
+            android:onClick="onClick"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+            <ImageView
+              android:id="@+id/ImageView_water_air"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginTop="20dp"
+              android:layout_marginBottom="20dp"
+              android:layout_marginStart="20dp"
+              android:layout_marginEnd="20dp"
+              android:adjustViewBounds="true"
+              android:src="@mipmap/warm_air_0" />
+            <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="暖风"
+              android:layout_marginLeft="20dp"
+              android:ems="1"
+              android:layout_centerVertical="true"
+              android:textSize="30dp"
+              android:textColor="@color/black" />
+          </RelativeLayout>
+          <Space
+            android:layout_width="wrap_content"
+            android:layout_height="10dp" />
+          <RelativeLayout
+            android:id="@+id/LinearLayout_timer_dry"
+            android:onClick="onClick"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <ImageView
+              android:id="@+id/ImageView_timer_dry"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginTop="20dp"
+              android:layout_marginBottom="20dp"
+              android:layout_marginStart="20dp"
+              android:layout_marginEnd="20dp"
+              android:adjustViewBounds="true"
+              android:src="@mipmap/timer_dry_0" />
+            <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="定时干燥"
+              android:layout_marginLeft="20dp"
+              android:layout_centerVertical="true"
+              android:textSize="30dp"
+              android:ems="1"
+              android:textColor="@color/black" />
+          </RelativeLayout>
+
+        </LinearLayout>
 
 
+        <!--手动-->
+        <LinearLayout
+          android:id="@+id/LinearLayout_left_user"
+          android:layout_width="300dp"
+          android:layout_height="match_parent"
+          android:gravity="center_horizontal"
+          android:orientation="vertical"
+          android:visibility="gone">
+
+          <RelativeLayout
+            android:id="@+id/LinearLayout_defecate"
+            android:onClick="onClick"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <ImageView
+              android:id="@+id/ImageView_defecate"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:adjustViewBounds="true"
+              android:layout_margin="20dp"
+              android:src="@mipmap/defeate_0" />
+            <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="大便"
+              android:layout_gravity="center_horizontal"
+              android:textSize="30dp"
+              android:visibility="gone"
+              android:textColor="@color/black" />
+
+          </RelativeLayout>
+          <Space
+            android:layout_width="wrap_content"
+            android:layout_height="10dp" />
+          <RelativeLayout
+            android:id="@+id/LinearLayout_pee"
+            android:onClick="onClick"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <ImageView
+              android:id="@+id/ImageView_pee"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_margin="20dp"
+              android:adjustViewBounds="true"
+              android:src="@mipmap/pee_0" />
+            <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="小便"
+              android:layout_gravity="center_horizontal"
+              android:textSize="30dp"
+              android:visibility="gone"
+              android:textColor="@color/black" />
+          </RelativeLayout>
+          <Space
+            android:layout_width="wrap_content"
+            android:layout_height="10dp" />
+          <RelativeLayout
+            android:id="@+id/LinearLayout_absorption"
+            android:onClick="onClick"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <ImageView
+              android:id="@+id/ImageView_wabsorption"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_weight="1"
+              android:adjustViewBounds="true"
+              android:layout_margin="20dp"
+              android:src="@mipmap/absorb_0" />
+            <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="强吸"
+              android:layout_gravity="center_horizontal"
+              android:textSize="30dp"
+              android:visibility="gone"
+              android:textColor="@color/black" />
+          </RelativeLayout>
+          <Space
+            android:layout_width="wrap_content"
+            android:layout_height="10dp" />
+          <RelativeLayout
+            android:id="@+id/LinearLayout_dry"
+            android:onClick="onClick"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <ImageView
+              android:id="@+id/ImageView_dry"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_weight="1"
+              android:adjustViewBounds="true"
+              android:src="@mipmap/dry_0"
+              android:layout_margin="20dp" />
+            <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="干燥"
+              android:layout_gravity="center_horizontal"
+              android:textSize="30dp"
+              android:visibility="gone"
+              android:textColor="@color/black" />
+          </RelativeLayout>
+
+        </LinearLayout>
 
         <RelativeLayout
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+
+          >
+          <LinearLayout
+            android:id="@+id/LinearLayout_center_bottom"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="150px"
             android:orientation="horizontal"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="30dp"
+            android:paddingRight="90dp"
+            android:paddingLeft="40dp"
+            android:layout_marginBottom="30dp">
+
+
+            <RelativeLayout
+              android:layout_width="0dp"
+              android:layout_height="match_parent"
+              android:layout_weight="1">
+              <LinearLayout
+                android:id="@+id/LinearLayout_left"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <ImageView
+                  android:id="@+id/ImageView_water_clean"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_weight="1"
+                  android:adjustViewBounds="true"
+                  android:src="@mipmap/clean_water_0"
+                  android:layout_gravity="center_horizontal" />
+                <TextView
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="净水桶"
+                  android:layout_gravity="center_horizontal"
+                  android:textSize="30dp"
+                  android:textColor="@color/black" />
+
+
+              </LinearLayout>
+              <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:src="@drawable/round"
+                android:layout_toRightOf="@id/LinearLayout_left"
+                android:layout_marginLeft="3dp" />
+            </RelativeLayout>
+            <Space
+              android:layout_width="10dp"
+              android:layout_height="wrap_content" />
+            <RelativeLayout
+              android:layout_width="0dp"
+              android:layout_height="match_parent"
+              android:layout_weight="1">
+              <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/LinearLayout_right"
+                android:orientation="vertical">
+                <ImageView
+                  android:id="@+id/ImageView_water_dirty"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_weight="1"
+                  android:adjustViewBounds="true"
+                  android:src="@mipmap/dirty_water_0"
+                  android:layout_gravity="center_horizontal" />
+                <TextView
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="污水罐"
+                  android:layout_gravity="center_horizontal"
+                  android:textSize="30dp"
+                  android:textColor="@color/black" />
+              </LinearLayout>
+              <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:src="@drawable/round"
+                android:layout_toRightOf="@id/LinearLayout_right"
+                android:layout_marginLeft="3dp" />
+            </RelativeLayout>
+
+
+          </LinearLayout>
+          <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/LinearLayout_center_bottom"
+            android:paddingRight="90dp"
             android:gravity="center">
 
-            <Space
-                android:layout_width="30dp"
-                android:layout_height="wrap_content"/>
+
             <ImageView
-                android:id="@+id/ImageView_stop"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:adjustViewBounds="true"
-                android:onClick="onClick"
-                android:src="@mipmap/stop_0"/>
-            <Space
-                android:layout_width="30dp"
-                android:layout_height="wrap_content"/>
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:src="@mipmap/run_2x"
+              android:adjustViewBounds="true"
+              android:layout_centerHorizontal="true"
+              android:layout_centerVertical="true" />
 
 
             <ImageView
-                android:id="@+id/ImageView_auto"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:adjustViewBounds="true"
-                android:onClick="onClick"
-                android:src="@mipmap/auto_1"/>
-            <Space
-                android:layout_width="30dp"
-                android:layout_height="wrap_content"/>
-
-            <ImageView
-                android:id="@+id/ImageView_control"
-                android:onClick="onClick"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:adjustViewBounds="true"
-                android:src="@mipmap/control_0"/>
-
-            <Space
-                android:layout_width="30dp"
-                android:layout_height="wrap_content"/>
-        </LinearLayout>
-        </RelativeLayout>
-
-    </RelativeLayout>
-
-
-    <RelativeLayout
-        android:id="@+id/RelativeLayout_main"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/RelativeLayout_top"
-        android:layout_above="@id/RelativeLayout_bottom">
-
-
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            >
-
-            <!--图标层-->
-            <!--
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="120dp"
-                android:layout_marginRight="200dp"
-                android:layout_marginTop="30dp"
-                android:orientation="horizontal">
-
-
-                <RelativeLayout
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content">
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <ImageView
-
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:adjustViewBounds="true"
-                            android:src="@mipmap/water_press_1"
-                            />
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="污水罐未装"
-                            android:textSize="14dp"
-                            android:textColor="@color/black"/>
-
-                    </LinearLayout>
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content">
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <ImageView
-
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:adjustViewBounds="true"
-                            android:src="@mipmap/water_press_1"
-
-                            />
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="坐便器未装"
-                            android:textSize="14dp"
-
-                            android:textColor="@color/black"/>
-
-                    </LinearLayout>
-                </RelativeLayout>
-                <RelativeLayout
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content">
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <ImageView
-
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:adjustViewBounds="true"
-                            android:src="@mipmap/water_press_1"
-
-                            />
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="负压管有水"
-                            android:textSize="14dp"
-                            android:textColor="@color/black"/>
-
-                    </LinearLayout>
-                </RelativeLayout>
-                <RelativeLayout
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content">
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <ImageView
-
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:adjustViewBounds="true"
-                            android:src="@mipmap/water_press_1"
-
-                            />
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="检测漏水"
-                            android:textSize="14dp"
-                            android:textColor="@color/black"/>
-
-                    </LinearLayout>
-                </RelativeLayout>
-                <RelativeLayout
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content">
-                    <LinearLayout
-
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <ImageView
-
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:adjustViewBounds="true"
-                            android:src="@mipmap/water_press_1"
-
-                            />
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="坐便器水满"
-                            android:textSize="14dp"
-                            android:textColor="@color/black"/>
-
-                    </LinearLayout>
-                </RelativeLayout>
-                <RelativeLayout
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content">
-                    <LinearLayout
-
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:adjustViewBounds="true"
-                            android:src="@mipmap/water_press_1"
-                            />
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="被褥湿"
-                            android:textSize="14dp"
-                            android:textColor="@color/black"/>
-
-                    </LinearLayout>
-                </RelativeLayout>
-            </LinearLayout>
-            -->
-
-
-            <!--中间层-->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:layout_marginBottom="30dp"
-                android:layout_marginTop="200dp">
-
-                <!--自动-->
-                <LinearLayout
-                    android:id="@+id/LinearLayout_left_auto"
-                    android:layout_width="300dp"
-                    android:layout_height="match_parent"
-                    android:gravity="center_horizontal"
-                    android:orientation="vertical">
-
-                    <RelativeLayout
-                        android:id="@+id/LinearLayout_water_press"
-                        android:onClick="onClick"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        >
-
-
-                        <ImageView
-                          android:id="@+id/ImageView_water_press"
-                          android:layout_width="match_parent"
-                          android:layout_height="wrap_content"
-                          android:layout_marginTop="20dp"
-                          android:layout_marginBottom="20dp"
-                          android:layout_marginStart="20dp"
-                          android:layout_marginEnd="20dp"
-                          android:adjustViewBounds="true"
-                          android:src="@mipmap/water_press_0" />
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="水压"
-                            android:textSize="30dp"
-                            android:layout_marginLeft="20dp"
-                            android:layout_centerVertical="true"
-                            android:ems="1"
-                            android:textColor="@color/black"/>
-
-
-                    </RelativeLayout>
-                    <Space
-                        android:layout_width="wrap_content"
-                        android:layout_height="10dp"/>
-                    <RelativeLayout
-                        android:id="@+id/LinearLayout_water_temper"
-                        android:onClick="onClick"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        >
-
-                        <ImageView
-                          android:id="@+id/ImageView_water_temper"
-                          android:layout_width="match_parent"
-                          android:layout_height="wrap_content"
-                          android:layout_marginTop="20dp"
-                          android:layout_marginBottom="20dp"
-                          android:layout_marginStart="20dp"
-                          android:layout_marginEnd="20dp"
-                          android:adjustViewBounds="true"
-                          android:src="@mipmap/water_temper_0" />
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="水温"
-                            android:layout_gravity="center_horizontal"
-                            android:ems="1"
-                            android:layout_centerVertical="true"
-                            android:textSize="30dp"
-                            android:textColor="@color/black"
-                            android:layout_marginLeft="20dp"/>
-                    </RelativeLayout>
-                    <Space
-                        android:layout_width="wrap_content"
-                        android:layout_height="10dp"/>
-                    <RelativeLayout
-                        android:id="@+id/LinearLayout_warm_air"
-                        android:onClick="onClick"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        >
-                        <ImageView
-                          android:id="@+id/ImageView_water_air"
-                          android:layout_width="match_parent"
-                          android:layout_height="wrap_content"
-                          android:layout_marginTop="20dp"
-                          android:layout_marginBottom="20dp"
-                          android:layout_marginStart="20dp"
-                          android:layout_marginEnd="20dp"
-                          android:adjustViewBounds="true"
-                          android:src="@mipmap/warm_air_0" />
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="暖风"
-                            android:layout_marginLeft="20dp"
-                            android:ems="1"
-                            android:layout_centerVertical="true"
-                            android:textSize="30dp"
-                            android:textColor="@color/black"/>
-                    </RelativeLayout>
-                    <Space
-                        android:layout_width="wrap_content"
-                        android:layout_height="10dp"/>
-                    <RelativeLayout
-                        android:id="@+id/LinearLayout_timer_dry"
-                        android:onClick="onClick"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-                        <ImageView
-                          android:id="@+id/ImageView_timer_dry"
-                          android:layout_width="match_parent"
-                          android:layout_height="wrap_content"
-                          android:layout_marginTop="20dp"
-                          android:layout_marginBottom="20dp"
-                          android:layout_marginStart="20dp"
-                          android:layout_marginEnd="20dp"
-                          android:adjustViewBounds="true"
-                          android:src="@mipmap/timer_dry_0" />
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="定时干燥"
-                            android:layout_marginLeft="20dp"
-                            android:layout_centerVertical="true"
-                            android:textSize="30dp"
-                            android:ems="1"
-                            android:textColor="@color/black"/>
-                    </RelativeLayout>
-
-                </LinearLayout>
-
-
-                <!--手动-->
-                <LinearLayout
-                    android:id="@+id/LinearLayout_left_user"
-                    android:layout_width="300dp"
-                    android:layout_height="match_parent"
-                    android:gravity="center_horizontal"
-                    android:orientation="vertical"
-                    android:visibility="gone">
-
-                    <RelativeLayout
-                        android:id="@+id/LinearLayout_defecate"
-                        android:onClick="onClick"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-                        <ImageView
-                            android:id="@+id/ImageView_defecate"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:adjustViewBounds="true"
-                            android:layout_margin="20dp"
-                            android:src="@mipmap/defeate_0"
-                            />
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="大便"
-                            android:layout_gravity="center_horizontal"
-                            android:textSize="30dp"
-                            android:visibility="gone"
-                            android:textColor="@color/black"/>
-
-                    </RelativeLayout>
-                    <Space
-                        android:layout_width="wrap_content"
-                        android:layout_height="10dp"/>
-                    <RelativeLayout
-                        android:id="@+id/LinearLayout_pee"
-                        android:onClick="onClick"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-                        <ImageView
-                            android:id="@+id/ImageView_pee"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="20dp"
-                            android:adjustViewBounds="true"
-                            android:src="@mipmap/pee_0"
-                            />
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="小便"
-                            android:layout_gravity="center_horizontal"
-                            android:textSize="30dp"
-                            android:visibility="gone"
-                            android:textColor="@color/black"/>
-                    </RelativeLayout>
-                    <Space
-                        android:layout_width="wrap_content"
-                        android:layout_height="10dp"/>
-                    <RelativeLayout
-                        android:id="@+id/LinearLayout_absorption"
-                        android:onClick="onClick"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-                        <ImageView
-                            android:id="@+id/ImageView_wabsorption"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:adjustViewBounds="true"
-                            android:layout_margin="20dp"
-                            android:src="@mipmap/absorb_0"
-                            />
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="强吸"
-                            android:layout_gravity="center_horizontal"
-                            android:textSize="30dp"
-                            android:visibility="gone"
-                            android:textColor="@color/black"/>
-                    </RelativeLayout>
-                    <Space
-                        android:layout_width="wrap_content"
-                        android:layout_height="10dp"/>
-                    <RelativeLayout
-                        android:id="@+id/LinearLayout_dry"
-                        android:onClick="onClick"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-                        <ImageView
-                            android:id="@+id/ImageView_dry"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:adjustViewBounds="true"
-                            android:src="@mipmap/dry_0"
-                            android:layout_margin="20dp"
-                            />
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="干燥"
-                            android:layout_gravity="center_horizontal"
-                            android:textSize="30dp"
-                            android:visibility="gone"
-                            android:textColor="@color/black"/>
-                    </RelativeLayout>
-
-                </LinearLayout>
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-
-                    >
-                    <LinearLayout
-                        android:id="@+id/LinearLayout_center_bottom"
-                        android:layout_width="match_parent"
-                        android:layout_height="150px"
-                        android:orientation="horizontal"
-                        android:layout_alignParentBottom="true"
-                        android:paddingRight="90dp"
-                        android:paddingLeft="40dp"
-                        android:layout_marginBottom="30dp">
-
-
-
-
-                        <RelativeLayout
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1">
-                            <LinearLayout
-                                android:id="@+id/LinearLayout_left"
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:orientation="vertical">
-                                <ImageView
-                                    android:id="@+id/ImageView_water_clean"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:adjustViewBounds="true"
-                                    android:src="@mipmap/clean_water_0"
-                                    android:layout_gravity="center_horizontal"
-                                    />
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="净水桶"
-                                    android:layout_gravity="center_horizontal"
-                                    android:textSize="30dp"
-                                    android:textColor="@color/black"/>
-
-
-
-
-                            </LinearLayout>
-                            <ImageView
-                                android:layout_width="16dp"
-                                android:layout_height="16dp"
-                                android:src="@drawable/round"
-                                android:layout_toRightOf="@id/LinearLayout_left"
-                                android:layout_marginLeft="3dp"
-                                />
-                        </RelativeLayout>
-                        <Space
-                            android:layout_width="10dp"
-                            android:layout_height="wrap_content"/>
-                        <RelativeLayout
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1">
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:id="@+id/LinearLayout_right"
-                                android:orientation="vertical">
-                                <ImageView
-                                    android:id="@+id/ImageView_water_dirty"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:adjustViewBounds="true"
-                                    android:src="@mipmap/dirty_water_0"
-                                    android:layout_gravity="center_horizontal"
-                                    />
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="污水罐"
-                                    android:layout_gravity="center_horizontal"
-                                    android:textSize="30dp"
-                                    android:textColor="@color/black"/>
-                            </LinearLayout>
-                            <ImageView
-                                android:layout_width="16dp"
-                                android:layout_height="16dp"
-                                android:src="@drawable/round"
-                                android:layout_toRightOf="@id/LinearLayout_right"
-                                android:layout_marginLeft="3dp"
-                                />
-                        </RelativeLayout>
-
-
-
-
-
-
-
-                    </LinearLayout>
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_above="@id/LinearLayout_center_bottom"
-                        android:paddingRight="90dp"
-                        android:gravity="center">
-
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@mipmap/run_2x"
-                            android:adjustViewBounds="true"
-                            android:layout_centerHorizontal="true"
-                            android:layout_centerVertical="true"
-                            />
-
-
-
-                        <ImageView
-                            android:id="@+id/ImageView_run"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@mipmap/safe_3x"
-                            android:adjustViewBounds="true"
-                            android:layout_centerHorizontal="true"
-                            android:layout_centerVertical="true"
-                            />
-
-
-                        <TextView
-                            android:id="@+id/TextView_run"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/ImageView_run"
-                            android:layout_centerHorizontal="true"
-                            android:text="守护状态"
-                            android:textColor="@color/black"
-                            android:textSize="30dp"
-                            android:layout_marginTop="30dp"
-                            android:visibility="visible"/>
-
-
-
-
-
-                    </RelativeLayout>
-
-
-
-
-                </RelativeLayout>
-
-            </LinearLayout>
-
-
-            <!--提示层-->
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:orientation="vertical">
-            <LinearLayout
-                android:id="@+id/LinearLayout_tip"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-            <RelativeLayout
-                android:id="@+id/RelativeLayout_tips"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@mipmap/tips_bg_2x"
-                android:visibility="gone"
-                >
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@mipmap/tips_ico_2x"
-                        android:layout_marginLeft="20dp"/>
-
-
-
-                    <TextView
-                        android:id="@+id/TextView_tips"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Er7 请清空污物罐"
-                        android:layout_gravity="center_vertical"
-                        android:textSize="30dp"
-                        android:textColor="@color/white"
-                        android:layout_marginLeft="20dp"/>
-
-
-
-                </LinearLayout>
-
-
-
-            </RelativeLayout>
-            <RelativeLayout
-                android:id="@+id/RelativeLayout_tips_none"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@mipmap/tips_none"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp"
-                >
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@mipmap/tips_ico"
-                        android:layout_marginLeft="20dp"/>
-
-
-                </LinearLayout>
-
-            </RelativeLayout>
-
-
-            </LinearLayout>
-
-            <!--污水罐未装-->
-            <LinearLayout
-                android:id="@+id/LinearLayout_tip_1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:visibility="gone"
-                android:layout_marginTop="20dp">
-                <RelativeLayout
-
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@mipmap/tips_bg_2x"
-                    android:visibility="visible"
-                    >
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@mipmap/tips_ico_2x"
-                            android:layout_marginLeft="20dp"/>
-
-
-
-                        <TextView
-
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Er1 污水罐未装"
-                            android:layout_gravity="center_vertical"
-                            android:textSize="30dp"
-                            android:textColor="@color/white"
-                            android:layout_marginLeft="20dp"/>
-
-
-
-                    </LinearLayout>
-
-
-
-                </RelativeLayout>
-
-            </LinearLayout>
-            <!--坐便器未装-->
-            <LinearLayout
-                    android:id="@+id/LinearLayout_tip_2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:visibility="gone"
-                    android:layout_marginTop="20dp">
-                    <RelativeLayout
-
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@mipmap/tips_bg_2x"
-                        android:visibility="visible"
-                        >
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerVertical="true"
-                            android:orientation="horizontal">
-
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@mipmap/tips_ico_2x"
-                                android:layout_marginLeft="20dp"/>
-
-
-
-                            <TextView
-
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Er2 坐便器未正确安装"
-                                android:layout_gravity="center_vertical"
-                                android:textSize="30dp"
-                                android:textColor="@color/white"
-                                android:layout_marginLeft="20dp"/>
-
-
-
-                        </LinearLayout>
-
-
-
-                    </RelativeLayout>
-
-                </LinearLayout>
-            <!--负压管有水-->
-            <LinearLayout
-                    android:id="@+id/LinearLayout_tip_3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:visibility="gone"
-                    android:layout_marginTop="20dp">
-                    <RelativeLayout
-
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@mipmap/tips_bg_2x"
-                        android:visibility="visible"
-                        >
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerVertical="true"
-                            android:orientation="horizontal">
-
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@mipmap/tips_ico_2x"
-                                android:layout_marginLeft="20dp"/>
-
-
-
-                            <TextView
-
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Er3 负压罐有水"
-                                android:layout_gravity="center_vertical"
-                                android:textSize="30dp"
-                                android:textColor="@color/white"
-                                android:layout_marginLeft="20dp"/>
-
-
-
-                        </LinearLayout>
-
-
-
-                    </RelativeLayout>
-
-                </LinearLayout>
-            <!--检测漏水-->
-            <LinearLayout
-                    android:id="@+id/LinearLayout_tip_4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:visibility="gone"
-                    android:layout_marginTop="20dp">
-                    <RelativeLayout
-
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@mipmap/tips_bg_2x"
-                        android:visibility="visible"
-                        >
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerVertical="true"
-                            android:orientation="horizontal">
-
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@mipmap/tips_ico_2x"
-                                android:layout_marginLeft="20dp"/>
-
-
-
-                            <TextView
-
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Er4 检测漏水"
-                                android:layout_gravity="center_vertical"
-                                android:textSize="30dp"
-                                android:textColor="@color/white"
-                                android:layout_marginLeft="20dp"/>
-
-
-
-                        </LinearLayout>
-
-
-
-                    </RelativeLayout>
-
-                </LinearLayout>
-            <!--坐便器液位水满-->
-            <LinearLayout
-                    android:id="@+id/LinearLayout_tip_5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:visibility="gone"
-                    android:layout_marginTop="20dp">
-                    <RelativeLayout
-
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@mipmap/tips_bg_2x"
-                        android:visibility="visible"
-                        >
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerVertical="true"
-                            android:orientation="horizontal">
-
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@mipmap/tips_ico_2x"
-                                android:layout_marginLeft="20dp"/>
-
-
-
-                            <TextView
-
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Er5 坐便器水溢出，请联系售后"
-                                android:layout_gravity="center_vertical"
-                                android:textSize="30dp"
-                                android:textColor="@color/white"
-                                android:layout_marginLeft="20dp"/>
-
-
-
-                        </LinearLayout>
-
-
-
-                    </RelativeLayout>
-
-                </LinearLayout>
-            <!--被褥湿-->
-            <LinearLayout
-                    android:id="@+id/LinearLayout_tip_6"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:visibility="gone"
-                    android:layout_marginTop="20dp">
-                    <RelativeLayout
-
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@mipmap/tips_bg_2x"
-                        android:visibility="visible"
-                        >
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerVertical="true"
-                            android:orientation="horizontal">
-
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@mipmap/tips_ico_2x"
-                                android:layout_marginLeft="20dp"/>
-
-
-
-                            <TextView
-
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Er6 被褥湿"
-                                android:layout_gravity="center_vertical"
-                                android:textSize="30dp"
-                                android:textColor="@color/white"
-                                android:layout_marginLeft="20dp"/>
-
-
-
-                        </LinearLayout>
-
-
-
-                    </RelativeLayout>
-
-                </LinearLayout>
-
-
-                <!--无人体-->
-                <LinearLayout
-                    android:id="@+id/LinearLayout_tip_7"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:visibility="gone"
-                    android:layout_marginTop="20dp">
-                    <RelativeLayout
-
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@mipmap/tips_bg_2x"
-                        android:visibility="visible"
-                        >
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerVertical="true"
-                            android:orientation="horizontal">
-
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@mipmap/tips_ico_2x"
-                                android:layout_marginLeft="20dp"/>
-
-
-
-                            <TextView
-
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Er7 无人体"
-                                android:layout_gravity="center_vertical"
-                                android:textSize="30dp"
-                                android:textColor="@color/white"
-                                android:layout_marginLeft="20dp"/>
-
-
-
-                        </LinearLayout>
-
-
-
-                    </RelativeLayout>
-
-                </LinearLayout>
-
-
-            </LinearLayout>
-
-
-
+              android:id="@+id/ImageView_run"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:src="@mipmap/safe_3x"
+              android:adjustViewBounds="true"
+              android:layout_centerHorizontal="true"
+              android:layout_centerVertical="true" />
+
+
+            <TextView
+              android:id="@+id/TextView_run"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_below="@id/ImageView_run"
+              android:layout_centerHorizontal="true"
+              android:text="守护状态"
+              android:textColor="@color/black"
+              android:textSize="30dp"
+              android:layout_marginTop="30dp"
+              android:visibility="visible" />
+
+
+          </RelativeLayout>
 
 
         </RelativeLayout>
 
+      </LinearLayout>
 
 
-        <!--用户昵称层-->
-        <RelativeLayout
-            android:id="@+id/RelativeLayout_userinfo"
-            android:onClick="onClick"
+      <!--提示层-->
+      <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical">
+        <LinearLayout
+          android:id="@+id/LinearLayout_tip"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content">
+          <RelativeLayout
+            android:id="@+id/RelativeLayout_tips"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="20dp">
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/user_2x"/>
+            android:background="@mipmap/tips_bg_2x"
+            android:visibility="gone">
 
             <LinearLayout
-                android:id="@+id/LinearLayout_name"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_centerVertical="true"
+              android:orientation="horizontal">
+
+              <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="20dp">
-                <TextView
-                       android:layout_width="wrap_content"
-                       android:layout_height="wrap_content"
-                       android:text="赵云"
-                       android:textSize="24dp"
-                       android:textColor="@color/black" />
+                android:src="@mipmap/tips_ico_2x"
+                android:layout_marginLeft="20dp" />
 
 
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:adjustViewBounds="true"
-                    android:layout_marginLeft="10dp"
-                    android:src="@mipmap/boy"/>
+              <TextView
+                android:id="@+id/TextView_tips"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Er7 请清空污物罐"
+                android:layout_gravity="center_vertical"
+                android:textSize="30dp"
+                android:textColor="@color/white"
+                android:layout_marginLeft="20dp" />
+
 
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/TextView_defeate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/LinearLayout_name"
-                android:text="大"
-                android:textSize="18dp"
-                android:layout_marginTop="10dp"
-                android:layout_centerHorizontal="true"
-                android:textColor="@color/black" />
-            <TextView
-                android:id="@+id/TextView_defeate_num"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/TextView_defeate"
-                android:layout_toLeftOf="@id/TextView_defeate"
-                android:layout_marginRight="10dp"
-                android:text="3"
-                android:textSize="30dp"
-                android:layout_marginTop="-20dp"
-                android:textColor="@color/black" />
 
-
-
-
-            <TextView
-                android:id="@+id/TextView_pee_num"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/TextView_defeate_num"
-                android:layout_toRightOf="@id/TextView_defeate"
-                android:text="10"
-                android:textSize="30dp"
-
-                android:layout_centerHorizontal="true"
-                android:textColor="@color/black" />
-            <TextView
-                android:id="@+id/TextView_pee"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/TextView_pee_num"
-                android:layout_toLeftOf="@id/TextView_pee_num"
-                android:text="小"
-                android:textSize="18dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="-20dp"
-                android:textColor="@color/black" />
-
-
-
-
-            <RelativeLayout
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:background="@drawable/line"
-                android:layout_alignTop="@id/TextView_defeate_num"
-                android:layout_alignBottom="@id/TextView_pee"
-                android:layout_alignLeft="@id/TextView_defeate_num"
-                android:layout_alignRight="@id/TextView_pee_num"/>
-
-        </RelativeLayout>
-
-
-        <!--debug 层-->
-        <TextView
-            android:id="@+id/TextView_debug"
-            android:layout_width="200dp"
+          </RelativeLayout>
+          <RelativeLayout
+            android:id="@+id/RelativeLayout_tips_none"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="debug模式"
-            android:layout_alignParentEnd="true"
-            android:visibility="visible"
-            android:background="@color/gray"
-            />
+            android:background="@mipmap/tips_none"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp">
 
+            <LinearLayout
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_centerVertical="true"
+              android:orientation="horizontal">
+
+              <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/tips_ico"
+                android:layout_marginLeft="20dp" />
+
+
+            </LinearLayout>
+
+          </RelativeLayout>
+
+
+        </LinearLayout>
+
+        <!--污水罐未装-->
+        <LinearLayout
+          android:id="@+id/LinearLayout_tip_1"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:visibility="gone"
+          android:layout_marginTop="20dp">
+          <RelativeLayout
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/tips_bg_2x"
+            android:visibility="visible">
+
+            <LinearLayout
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_centerVertical="true"
+              android:orientation="horizontal">
+
+              <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/tips_ico_2x"
+                android:layout_marginLeft="20dp" />
+
+
+              <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Er1 污水罐未装"
+                android:layout_gravity="center_vertical"
+                android:textSize="30dp"
+                android:textColor="@color/white"
+                android:layout_marginLeft="20dp" />
+
+
+            </LinearLayout>
+
+
+          </RelativeLayout>
+
+        </LinearLayout>
+        <!--坐便器未装-->
+        <LinearLayout
+          android:id="@+id/LinearLayout_tip_2"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:visibility="gone"
+          android:layout_marginTop="20dp">
+          <RelativeLayout
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/tips_bg_2x"
+            android:visibility="visible">
+
+            <LinearLayout
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_centerVertical="true"
+              android:orientation="horizontal">
+
+              <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/tips_ico_2x"
+                android:layout_marginLeft="20dp" />
+
+
+              <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Er2 坐便器未正确安装"
+                android:layout_gravity="center_vertical"
+                android:textSize="30dp"
+                android:textColor="@color/white"
+                android:layout_marginLeft="20dp" />
+
+
+            </LinearLayout>
+
+
+          </RelativeLayout>
+
+        </LinearLayout>
+        <!--负压管有水-->
+        <LinearLayout
+          android:id="@+id/LinearLayout_tip_3"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:visibility="gone"
+          android:layout_marginTop="20dp">
+          <RelativeLayout
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/tips_bg_2x"
+            android:visibility="visible">
+
+            <LinearLayout
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_centerVertical="true"
+              android:orientation="horizontal">
+
+              <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/tips_ico_2x"
+                android:layout_marginLeft="20dp" />
+
+
+              <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Er3 负压罐有水"
+                android:layout_gravity="center_vertical"
+                android:textSize="30dp"
+                android:textColor="@color/white"
+                android:layout_marginLeft="20dp" />
+
+
+            </LinearLayout>
+
+
+          </RelativeLayout>
+
+        </LinearLayout>
+        <!--检测漏水-->
+        <LinearLayout
+          android:id="@+id/LinearLayout_tip_4"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:visibility="gone"
+          android:layout_marginTop="20dp">
+          <RelativeLayout
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/tips_bg_2x"
+            android:visibility="visible">
+
+            <LinearLayout
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_centerVertical="true"
+              android:orientation="horizontal">
+
+              <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/tips_ico_2x"
+                android:layout_marginLeft="20dp" />
+
+
+              <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Er4 检测漏水"
+                android:layout_gravity="center_vertical"
+                android:textSize="30dp"
+                android:textColor="@color/white"
+                android:layout_marginLeft="20dp" />
+
+
+            </LinearLayout>
+
+
+          </RelativeLayout>
+
+        </LinearLayout>
+        <!--坐便器液位水满-->
+        <LinearLayout
+          android:id="@+id/LinearLayout_tip_5"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:visibility="gone"
+          android:layout_marginTop="20dp">
+          <RelativeLayout
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/tips_bg_2x"
+            android:visibility="visible">
+
+            <LinearLayout
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_centerVertical="true"
+              android:orientation="horizontal">
+
+              <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/tips_ico_2x"
+                android:layout_marginLeft="20dp" />
+
+
+              <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Er5 坐便器水溢出，请联系售后"
+                android:layout_gravity="center_vertical"
+                android:textSize="30dp"
+                android:textColor="@color/white"
+                android:layout_marginLeft="20dp" />
+
+
+            </LinearLayout>
+
+
+          </RelativeLayout>
+
+        </LinearLayout>
+        <!--被褥湿-->
+        <LinearLayout
+          android:id="@+id/LinearLayout_tip_6"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:visibility="gone"
+          android:layout_marginTop="20dp">
+          <RelativeLayout
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/tips_bg_2x"
+            android:visibility="visible">
+
+            <LinearLayout
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_centerVertical="true"
+              android:orientation="horizontal">
+
+              <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/tips_ico_2x"
+                android:layout_marginLeft="20dp" />
+
+
+              <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Er6 被褥湿"
+                android:layout_gravity="center_vertical"
+                android:textSize="30dp"
+                android:textColor="@color/white"
+                android:layout_marginLeft="20dp" />
+
+
+            </LinearLayout>
+
+
+          </RelativeLayout>
+
+        </LinearLayout>
+
+
+        <!--无人体-->
+        <LinearLayout
+          android:id="@+id/LinearLayout_tip_7"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:visibility="gone"
+          android:layout_marginTop="20dp">
+          <RelativeLayout
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/tips_bg_2x"
+            android:visibility="visible">
+
+            <LinearLayout
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_centerVertical="true"
+              android:orientation="horizontal">
+
+              <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/tips_ico_2x"
+                android:layout_marginLeft="20dp" />
+
+
+              <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Er7 无人体"
+                android:layout_gravity="center_vertical"
+                android:textSize="30dp"
+                android:textColor="@color/white"
+                android:layout_marginLeft="20dp" />
+
+
+            </LinearLayout>
+
+
+          </RelativeLayout>
+
+        </LinearLayout>
+
+
+      </LinearLayout>
 
 
     </RelativeLayout>
 
-    <!--控制弹出层-->
+
+    <!--用户昵称层-->
     <RelativeLayout
-        android:id="@+id/RelativeLayout_control"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:onClick="onClick"
-        android:background="@color/black_transparent"
-        android:visibility="gone">
-        <FrameLayout
-            android:id="@+id/FrameLayout_control"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginTop="150dp"
-            android:layout_marginBottom="100dp"
-            android:layout_marginLeft="250dp"/>
+      android:id="@+id/RelativeLayout_userinfo"
+      android:onClick="onClick"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignParentRight="true"
+      android:layout_marginTop="20dp">
+      <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/user_2x" />
+
+      <LinearLayout
+        android:id="@+id/LinearLayout_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp">
+        <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="赵云"
+          android:textSize="24dp"
+          android:textColor="@color/black" />
 
 
+        <ImageView
+          android:layout_width="20dp"
+          android:layout_height="wrap_content"
+          android:layout_gravity="center_vertical"
+          android:adjustViewBounds="true"
+          android:layout_marginLeft="10dp"
+          android:src="@mipmap/boy" />
 
+      </LinearLayout>
+
+      <TextView
+        android:id="@+id/TextView_defeate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/LinearLayout_name"
+        android:text="大"
+        android:textSize="18dp"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/black" />
+      <TextView
+        android:id="@+id/TextView_defeate_num"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/TextView_defeate"
+        android:layout_toLeftOf="@id/TextView_defeate"
+        android:layout_marginRight="10dp"
+        android:text="3"
+        android:textSize="30dp"
+        android:layout_marginTop="-20dp"
+        android:textColor="@color/black" />
+
+
+      <TextView
+        android:id="@+id/TextView_pee_num"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/TextView_defeate_num"
+        android:layout_toRightOf="@id/TextView_defeate"
+        android:text="10"
+        android:textSize="30dp"
+
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/black" />
+      <TextView
+        android:id="@+id/TextView_pee"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/TextView_pee_num"
+        android:layout_toLeftOf="@id/TextView_pee_num"
+        android:text="小"
+        android:textSize="18dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="-20dp"
+        android:textColor="@color/black" />
+
+
+      <RelativeLayout
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/line"
+        android:layout_alignTop="@id/TextView_defeate_num"
+        android:layout_alignBottom="@id/TextView_pee"
+        android:layout_alignLeft="@id/TextView_defeate_num"
+        android:layout_alignRight="@id/TextView_pee_num" />
 
     </RelativeLayout>
 
+
+    <!--debug 层-->
+    <TextView
+      android:id="@+id/TextView_debug"
+      android:layout_width="200dp"
+      android:layout_height="wrap_content"
+      android:text="debug模式"
+      android:layout_alignParentEnd="true"
+      android:visibility="visible"
+      android:background="@color/gray" />
+
+
+  </RelativeLayout>
+
+  <!--控制弹出层-->
+  <RelativeLayout
+    android:id="@+id/RelativeLayout_control"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:onClick="onClick"
+    android:background="@color/black_transparent"
+    android:visibility="gone">
+    <FrameLayout
+      android:id="@+id/FrameLayout_control"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_alignParentRight="true"
+      android:layout_centerVertical="true"
+      android:layout_marginTop="150dp"
+      android:layout_marginBottom="100dp"
+      android:layout_marginLeft="250dp" />
+
+
+  </RelativeLayout>
+
+
+  <ImageView
+    android:id="@+id/qrcode"
+    android:layout_width="200dp"
+    android:layout_height="200dp"
+    android:layout_centerInParent="true"
+    android:layout_margin="20dp" />
 
 </RelativeLayout>
