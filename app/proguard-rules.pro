@@ -35,3 +35,6 @@
 -keep enum com.kjy.care.service.MessageEvent { *; }
 -keep class com.kjy.care.bean.** { *; }
 -keep interface com.kjy.care.bean.** { *; }
+
+-keep class com.tuya.smartai.iot_sdk.** {*;}
+-keep class com.tencent.mars.** {*;}
