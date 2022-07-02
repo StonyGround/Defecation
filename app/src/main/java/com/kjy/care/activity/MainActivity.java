@@ -158,7 +158,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     mUid = BuildConfig.UUID;
     mAk = BuildConfig.AUTHOR_KEY;
 
-//    com.tuya.smartai.iot_sdk.Log.init(this, "/sdcard/tuya_log/iot_demo/", 3);
+    com.tuya.smartai.iot_sdk.Log.init(this, "/sdcard/tuya_log/iot_demo/", 3);
 
     ioTSDKManager = new IoTSDKManager(this) {
       @Override

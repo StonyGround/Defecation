@@ -29,8 +29,8 @@ android {
          // }
         ndk {
 
-            abiFilters  "armeabi"
-//            abiFilters  "armeabi-v7a"
+//            abiFilters  "armeabi"
+            abiFilters  "armeabi-v7a"
         }
         packagingOptions {
             pickFirst 'lib/armeabi-v7a/libc++_shared.so'
@@ -177,4 +177,5 @@ dependencies {
     implementation 'com.tuya.smart:tuyasmart-iot_sdk:1.0.8-rc.1'
     implementation 'com.alibaba:fastjson:1.1.67.android'
     implementation 'cn.yipianfengye.android:zxing-library:2.2'
+    implementation 'com.tencent.mars:mars-xlog:1.2.3'
 }
