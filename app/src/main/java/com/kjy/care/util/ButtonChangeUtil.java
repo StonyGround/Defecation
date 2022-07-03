@@ -621,8 +621,6 @@ public class ButtonChangeUtil {
 
 
 
-
-
     /**
      * 运行动画
      * @param view
@@ -681,6 +679,7 @@ public class ButtonChangeUtil {
         view.post(new Runnable() {
             @Override
             public void run() {
+                view.clearAnimation();
                 view.setImageResource(R.mipmap.safe_3x);
                 text.setText("守护模式");
 
