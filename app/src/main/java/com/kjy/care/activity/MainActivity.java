@@ -49,6 +49,7 @@ import com.tuya.smartai.iot_sdk.DPEvent;
 import com.tuya.smartai.iot_sdk.IoTSDKManager;
 import com.tuya.smartai.iot_sdk.UpgradeEventCallback;
 import com.uuzuche.lib_zxing.activity.CodeUtils;
+import com.uuzuche.lib_zxing.activity.ZXingLibrary;
 import es.dmoral.toasty.Toasty;
 import java.util.ArrayList;
 import java.util.List;
@@ -107,12 +108,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,
     loadCount();
     SerialportUtil.init();
 
-//        ZXingLibrary.initDisplayOpinion(this);
-//        if (!EasyPermissions.hasPermissions(MainActivity.this, requiredPermissions)) {
-//            EasyPermissions.requestPermissions(MainActivity.this, "需要授予权限以使用设备", PERMISSION_CODE, requiredPermissions);
-//        } else {
-//            initSDK();
-//        }
+    ZXingLibrary.initDisplayOpinion(this);
+    if (!EasyPermissions.hasPermissions(MainActivity.this, requiredPermissions)) {
+      EasyPermissions.requestPermissions(MainActivity.this, "需要授予权限以使用设备", PERMISSION_CODE,
+          requiredPermissions);
+    } else {
+      initSDK();
+    }
   }
 
 
@@ -165,7 +167,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,
     mUid = BuildConfig.UUID;
     mAk = BuildConfig.AUTHOR_KEY;
 
-    com.tuya.smartai.iot_sdk.Log.init(this, "/sdcard/care/iot_demo/", 3);
+    com.tuya.smartai.iot_sdk.Log.init(this, "/sdcard/tuya_log/iot_demo/", 3);
 
     ioTSDKManager = new IoTSDKManager(this) {
       @Override
@@ -176,18 +178,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,
       }
     };
 
-    output("固件版本：" + BuildConfig.VERSION_NAME);
-
-    output("init sdk：" + mPid + "/" + mUid + "/" + mAk);
-
     //注意：这里的pid等配置读取自local.properties文件，不能直接使用。请填写你自己的配置！
-    ioTSDKManager.initSDK("/sdcard/care/", mPid
+    ioTSDKManager.initSDK("/sdcard/tuya_iot/", mPid
         , mUid, mAk, BuildConfig.VERSION_NAME, new IoTSDKManager.IoTCallback() {
 
           @Override
           public void onDpEvent(DPEvent event) {
             if (event != null) {
-              output("收到 dp: " + event);
 
             }
           }
@@ -201,40 +198,20 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,
 
           @Override
           public void onShorturl(String urlJson) {
-            android.util.Log.d(TAG, "onShorturl: " + urlJson);
-            output("shorturl: " + urlJson);
-
-            String url = (String) JSONObject.parseObject(urlJson).get("shortUrl");
-
-            runOnUiThread(() -> {
-              qrCode.setVisibility(View.VISIBLE);
-              output("用涂鸦智能APP扫码激活");
-              qrCode.setImageBitmap(CodeUtils.createImage(url, 400, 400, null));
-            });
+            Log.d(TAG, "onShorturl: " + urlJson);
           }
 
           @Override
           public void onActive() {
-            android.util.Log.d(TAG, "onActive: devId-> " + ioTSDKManager.getDeviceId());
-            output("onActive: devId-> " + ioTSDKManager.getDeviceId());
 
-            runOnUiThread(() -> {
-              qrCode.setVisibility(View.GONE);
-              output("激活成功了");
-            });
           }
 
           @Override
           public void onFirstActive() {
-            output("onFirstActive");
-            android.util.Log.d(TAG, "onFirstActive: ");
-
           }
 
           @Override
           public void onMQTTStatusChanged(int status) {
-            output("onMQTTStatusChanged: " + status);
-            android.util.Log.d(TAG, "onMQTTStatusChanged: " + status);
 
             switch (status) {
               case IoTSDKManager.STATUS_OFFLINE:
@@ -253,7 +230,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,
                 if (events != null) {
                   for (DPEvent event : events) {
                     if (event != null) {
-                      output(event.toString());
                     }
                   }
                 }
@@ -261,42 +237,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,
             }
           }
         });
-
-    ioTSDKManager.setUpgradeCallback(new UpgradeEventCallback() {
-      @Override
-      public void onUpgradeInfo(String s) {
-        com.tuya.smartai.iot_sdk.Log.w(TAG, "onUpgradeInfo: " + s);
-
-        output("收到升级信息: " + s);
-
-//                runOnUiThread(() -> upgradeDialog.show());
-
-        ioTSDKManager.startUpgradeDownload();
-      }
-
-      @Override
-      public void onUpgradeDownloadStart() {
-        com.tuya.smartai.iot_sdk.Log.w(TAG, "onUpgradeDownloadStart");
-
-        output("开始升级下载");
-      }
-
-      @Override
-      public void onUpgradeDownloadUpdate(int i) {
-        com.tuya.smartai.iot_sdk.Log.w(TAG, "onUpgradeDownloadUpdate: " + i);
-      }
-
-      @Override
-      public void upgradeFileDownloadFinished(int result, String file) {
-        com.tuya.smartai.iot_sdk.Log.w(TAG, "upgradeFileDownloadFinished: " + result);
-
-        output("下载完成：" + result + " / " + file);
-      }
-    });
-  }
-
-  private void output(String text) {
-//        com.tuya.smartai.iot_sdk.Log.d(TAG, text);
   }
 
   Handler mainHandler = new Handler() {
