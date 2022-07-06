@@ -106,7 +106,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,
     timer.schedule(task, 0, 1000);
 
     loadCount();
-    SerialportUtil.init();
+//    SerialportUtil.init();
 
     ZXingLibrary.initDisplayOpinion(this);
     if (!EasyPermissions.hasPermissions(MainActivity.this, requiredPermissions)) {
@@ -162,12 +162,15 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,
   String mAk;
   ImageView qrCode;
 
+
   private void initSDK() {
+
     mPid = BuildConfig.PID;
     mUid = BuildConfig.UUID;
     mAk = BuildConfig.AUTHOR_KEY;
 
-    com.tuya.smartai.iot_sdk.Log.init(this, "/sdcard/tuya_log/iot_demo/", 3);
+
+    com.tuya.smartai.iot_sdk.Log.init(this, "/sdcard/care/iot_demo/", 3);
 
     ioTSDKManager = new IoTSDKManager(this) {
       @Override
@@ -179,7 +182,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,
     };
 
     //注意：这里的pid等配置读取自local.properties文件，不能直接使用。请填写你自己的配置！
-    ioTSDKManager.initSDK("/sdcard/tuya_iot/", mPid
+    ioTSDKManager.initSDK("/sdcard/care/", mPid
         , mUid, mAk, BuildConfig.VERSION_NAME, new IoTSDKManager.IoTCallback() {
 
           @Override
