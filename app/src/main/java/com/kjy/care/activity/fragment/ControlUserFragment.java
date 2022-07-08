@@ -1,8 +1,6 @@
 package com.kjy.care.activity.fragment;
 
 
-import android.annotation.SuppressLint;
-import android.content.Context;
 import android.os.Bundle;
 
 import android.view.LayoutInflater;
@@ -16,7 +14,6 @@ import android.widget.TextView;
 import com.kjy.care.R;
 import com.kjy.care.activity.UserActivity;
 import com.kjy.care.util.ButtonChangeUtil;
-import com.kjy.care.util.MySqlUtil;
 import com.kjy.care.util.SPUtil;
 
 import androidx.annotation.NonNull;
@@ -143,7 +140,7 @@ public class ControlUserFragment extends BaseFragment implements View.OnClickLis
 
 
         ButtonChangeUtil.changeWaterPressIco(ImageView_water_press,getActivity(),Integer.parseInt(WATER_PRESS_LEV));
-        ButtonChangeUtil.changeWaterTemperIco(ImageView_water_temper,getActivity(),Integer.parseInt(WATER_TEMPER_LEV));
+        ButtonChangeUtil.changeWaterTemperIco(ImageView_water_temper,getActivity(),Integer.parseInt(WATER_TEMPER_LEV) );
         ButtonChangeUtil.changeWarmAirIco(ImageView_water_air,getActivity(),Integer.parseInt(WARM_AIR_LEV));
         ButtonChangeUtil.changeMassageIco(ImageView_massage,getActivity(),Integer.parseInt(MASSAGE_LEV));
 

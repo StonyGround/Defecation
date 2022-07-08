@@ -1,5 +1,5 @@
 apply plugin: 'com.android.application'
-apply from: '../config.gradle'
+//apply from: '../config.gradle'
 
 android {
     signingConfigs {
@@ -47,7 +47,6 @@ android {
 
         }
         debug {
-            versionNameSuffix ".beta"
             minifyEnabled false        //混淆
           //  shrinkResources true    //自动清理无用资源
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
@@ -73,18 +72,42 @@ android {
 
 
     productFlavors {
-        // app1
-        app {
-            // 设置applicationId（这里很重要，两个相同applicationId的apk不同同时安装在同一台Android手机中）
-            applicationId 'com.kjy.care'
-            versionCode rootProject.ext.versionCode
-            versionName rootProject.ext.versionName
-            versionNameSuffix = ".${releaseTime()}"//.beta
-            // 自动生成@string/app_name为demo
+        dev {
+            buildConfigField("String", "PID", '"zwr1q91x4epifw7k"')
+            buildConfigField("String", "AUTHKEY", '"wAXmu9svYreAmdt5NWkuvDiJlzDe5hhD"')
+            buildConfigField("String", "UUID", '"tuya18385b12244ec42e"')
             resValue "string", "app_name", "AI小助手"
             // 定义app_icon字段，在AndroidManifest.xml文件中用到
             manifestPlaceholders = [app_icon: "@mipmap/ic_launcher"]
         }
+        beta {
+            buildConfigField("String", "PID", '"zwr1q91x4epifw7k"')
+            buildConfigField("String", "AUTHKEY", '"FIFXe1HKPjciYjThc4zXTsSIz5UVpYfn"')
+            buildConfigField("String", "UUID", '"tuyadbd87dd5ff8900cd"')
+            resValue "string", "app_name", "AI小助手"
+            // 定义app_icon字段，在AndroidManifest.xml文件中用到
+            manifestPlaceholders = [app_icon: "@mipmap/ic_launcher"]
+        }
+        prod {
+            buildConfigField("String", "PID", '"zwr1q91x4epifw7k"')
+            buildConfigField("String", "AUTHKEY", '"FHEOY2H2g3J2WhXbhAGyoLAP5OwBxLbD"')
+            buildConfigField("String", "UUID", '"tuya037fc97f49be199a"')
+            resValue "string", "app_name", "AI小助手"
+            // 定义app_icon字段，在AndroidManifest.xml文件中用到
+            manifestPlaceholders = [app_icon: "@mipmap/ic_launcher"]
+        }
+
+        // app1
+//        app {
+//            // 设置applicationId（这里很重要，两个相同applicationId的apk不同同时安装在同一台Android手机中）
+//            applicationId 'com.kjy.care'
+//            versionCode rootProject.ext.versionCode
+//            versionName rootProject.ext.versionName
+//            // 自动生成@string/app_name为demo
+//            resValue "string", "app_name", "AI小助手"
+//            // 定义app_icon字段，在AndroidManifest.xml文件中用到
+//            manifestPlaceholders = [app_icon: "@mipmap/ic_launcher"]
+//        }
         // app2
 
     }
@@ -92,11 +115,15 @@ android {
         variant ->
             variant.outputs.all {
                 //这里修改apk文件名${defaultConfig.versionName}
-                outputFileName = "care_${productFlavors[0].versionName}_${buildType.name}_${releaseTime()}.apk"
+                outputFileName = "care_${variant.flavorName}_${variant.versionName}_${releaseTime()}.apk"
             }
     }
 
-
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
 }
 
 

@@ -457,54 +457,49 @@
                          android:paddingBottom="30dp"
                          >
                          <LinearLayout
-                             android:layout_width="wrap_content"
-                             android:layout_height="wrap_content"
-                             android:layout_centerVertical="true"
-                             android:layout_centerHorizontal="true"
-                             android:orientation="vertical">
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:layout_centerInParent="true"
+                           android:orientation="vertical">
                              <RelativeLayout
-                                 android:layout_width="wrap_content"
-                                 android:layout_height="wrap_content"
-                                 android:layout_gravity="center_horizontal"
-                                 android:layout_marginTop="20dp"
-                                 >
-                             <TextView
-                                 android:id="@+id/TextView_uv"
-                                 android:layout_width="wrap_content"
-                                 android:layout_height="wrap_content"
-                                 android:text="UV杀毒"
-                                 android:textColor="@color/black"
-                                 android:textSize="26dp"
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content"
+                               android:layout_marginTop="20dp"
+                               android:layout_gravity="center_horizontal">
+                                 <ImageView
+                                   android:layout_width="30dp"
+                                   android:layout_height="wrap_content"
+                                   android:layout_below="@id/TextView_uv"
+                                   android:layout_toRightOf="@id/TextView_uv"
+                                   android:adjustViewBounds="true"
+                                   android:src="@mipmap/min_fresh" />
+                                 <TextView
+                                   android:id="@+id/TextView_uv"
+                                   android:layout_width="wrap_content"
+                                   android:layout_height="wrap_content"
+                                   android:text="UV杀毒"
+                                   android:textColor="@color/black"
+                                   android:textSize="26dp"
 
-                                 />
-                             <ImageView
-                                 android:layout_width="30dp"
-                                 android:layout_height="wrap_content"
-                                 android:adjustViewBounds="true"
-                                 android:src="@mipmap/min_fresh"
-                                 android:layout_below="@id/TextView_uv"
-                                 android:layout_toRightOf="@id/TextView_uv"
-                                 />
+                                   />
                              </RelativeLayout>
 
                              <TextView
-                                 android:layout_width="wrap_content"
-                                 android:layout_height="wrap_content"
-                                 android:layout_gravity="center_horizontal"
-                                 android:text="3月多"
-                                 android:textColor="@color/black_gray"
-                                 android:textSize="24dp"
-                                 android:layout_marginTop="20dp"
-                                 />
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content"
+                               android:layout_marginTop="20dp"
+                               android:layout_gravity="center_horizontal"
+                               android:text="3月多"
+                               android:textColor="@color/black_gray"
+                               android:textSize="24dp" />
                              <TextView
-                                 android:layout_width="wrap_content"
-                                 android:layout_height="wrap_content"
-                                 android:layout_gravity="center_horizontal"
-                                 android:text="2021-08-05 到期"
-                                 android:textColor="@color/black_gray"
-                                 android:textSize="24dp"
-                                 android:layout_marginTop="20dp"
-                                 />
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content"
+                               android:layout_marginTop="20dp"
+                               android:layout_gravity="center_horizontal"
+                               android:text="2021-08-05 到期"
+                               android:textColor="@color/black_gray"
+                               android:textSize="24dp" />
                          </LinearLayout>
                      </RelativeLayout>
 

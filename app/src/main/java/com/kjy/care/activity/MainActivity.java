@@ -27,7 +27,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentTransaction;
 import com.alibaba.fastjson.JSONObject;
-import com.kjy.care.BuildConfig;
 import com.kjy.care.R;
 import com.kjy.care.activity.fragment.ControlAutoFragment;
 import com.kjy.care.activity.fragment.ControlUserFragment;
@@ -41,13 +40,13 @@ import com.kjy.care.util.ComCmdUtil;
 import com.kjy.care.util.CrashHandler;
 import com.kjy.care.util.DateUtil;
 import com.kjy.care.util.FastClickUtil;
+import com.kjy.care.util.IotUtil;
 import com.kjy.care.util.MediaPlayerUtil;
 import com.kjy.care.util.MyDataUtil;
 import com.kjy.care.util.SPUtil;
 import com.tapadoo.alerter.Alerter;
 import com.tuya.smartai.iot_sdk.DPEvent;
 import com.tuya.smartai.iot_sdk.IoTSDKManager;
-import com.tuya.smartai.iot_sdk.UpgradeEventCallback;
 import com.uuzuche.lib_zxing.activity.CodeUtils;
 import com.uuzuche.lib_zxing.activity.ZXingLibrary;
 import es.dmoral.toasty.Toasty;
@@ -106,7 +105,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,
     timer.schedule(task, 0, 1000);
 
     loadCount();
-//    SerialportUtil.init();
+    SerialportUtil.init();
 
     ZXingLibrary.initDisplayOpinion(this);
     if (!EasyPermissions.hasPermissions(MainActivity.this, requiredPermissions)) {
@@ -156,90 +155,127 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,
 
   }
 
-  IoTSDKManager ioTSDKManager;
-  String mPid;
-  String mUid;
-  String mAk;
   ImageView qrCode;
 
 
   private void initSDK() {
 
-    mPid = BuildConfig.PID;
-    mUid = BuildConfig.UUID;
-    mAk = BuildConfig.AUTHOR_KEY;
-
-
-    com.tuya.smartai.iot_sdk.Log.init(this, "/sdcard/care/iot_demo/", 3);
-
-    ioTSDKManager = new IoTSDKManager(this) {
+    IotUtil.init(this, new IoTSDKManager.IoTCallback() {
       @Override
-      protected boolean isOffline() {
-        //实现自定义网络监测
-        com.tuya.smartai.iot_sdk.Log.d(TAG, "isOffline: " + super.isOffline());
-        return super.isOffline();
-      }
-    };
-
-    //注意：这里的pid等配置读取自local.properties文件，不能直接使用。请填写你自己的配置！
-    ioTSDKManager.initSDK("/sdcard/care/", mPid
-        , mUid, mAk, BuildConfig.VERSION_NAME, new IoTSDKManager.IoTCallback() {
-
-          @Override
-          public void onDpEvent(DPEvent event) {
-            if (event != null) {
-
-            }
-          }
-
-          @Override
-          public void onReset() {
-
-            getSharedPreferences("event_cache", MODE_PRIVATE).edit().clear().commit();
-
-          }
-
-          @Override
-          public void onShorturl(String urlJson) {
-            Log.d(TAG, "onShorturl: " + urlJson);
-          }
-
-          @Override
-          public void onActive() {
-
-          }
-
-          @Override
-          public void onFirstActive() {
-          }
-
-          @Override
-          public void onMQTTStatusChanged(int status) {
-
-            switch (status) {
-              case IoTSDKManager.STATUS_OFFLINE:
-                // 设备网络离线
-                break;
-              case IoTSDKManager.STATUS_MQTT_OFFLINE:
-                // 网络在线MQTT离线
-                break;
-              case IoTSDKManager.STATUS_MQTT_ONLINE:
-                // 网络在线MQTT在线
-
-                SharedPreferences sp = getSharedPreferences("event_cache", MODE_PRIVATE);
-
-                DPEvent[] events = ioTSDKManager.getEvents();
-
-                if (events != null) {
-                  for (DPEvent event : events) {
-                    if (event != null) {
-                    }
-                  }
-                }
-                break;
-            }
+      public void onDpEvent(DPEvent event) {
+        Log.d(TAG, "onDpEvent: " + event);
+        runOnUiThread(() -> {
+          switch (event.dpid) {
+            case 101:
+              ButtonChangeUtil.changeWaterPress(ImageView_water_press, MainActivity.this, mysql);
+              break;
+            case 102:
+              ButtonChangeUtil.changeWaterTemper(ImageView_water_temper, MainActivity.this, mysql);
+              break;
+            case 103:
+              ButtonChangeUtil.changeWarmAir(ImageView_water_air, MainActivity.this, mysql);
+              break;
+            case 104:
+              ButtonChangeUtil.changeTimerDry(ImageView_timer_dry, MainActivity.this, mysql);
+              break;
+            case 107:
+              if ((Boolean) event.value) {
+                ButtonChangeUtil.changeStop(ImageView_stop, MainActivity.this, true, mysql);
+              }
+              break;
+            case 108:
+              changeAuto();
+              break;
+            case 112:
+              if ((Boolean) event.value) {
+                ButtonChangeUtil.changeDefecate(ImageView_defecate, MainActivity.this, true);
+              }
+              break;
+            case 113:
+              if ((Boolean) event.value) {
+                ButtonChangeUtil.changePee(ImageView_pee, MainActivity.this, true);
+              }
+              break;
+            case 114:
+              if ((Boolean) event.value) {
+                ButtonChangeUtil.changeWabsorption(ImageView_wabsorption, MainActivity.this, true,
+                    mysql);
+              }
+              break;
+            case 115:
+              if ((Boolean) event.value) {
+                ButtonChangeUtil.changeDry(ImageView_dry, MainActivity.this, true, mysql);
+              }
+              break;
+            case 116:
+              break;
+            case 117:
+              break;
           }
         });
+      }
+
+      @Override
+      public void onReset() {
+
+        getSharedPreferences("event_cache", MODE_PRIVATE).edit().clear().commit();
+
+      }
+
+      @Override
+      public void onShorturl(String urlJson) {
+        Log.d(TAG, "onShorturl: " + urlJson);
+
+        String url = (String) JSONObject.parseObject(urlJson).get("shortUrl");
+
+        runOnUiThread(() -> {
+          qrCode.setVisibility(View.VISIBLE);
+          qrCode.setImageBitmap(CodeUtils.createImage(url, 400, 400, null));
+        });
+      }
+
+      @Override
+      public void onActive() {
+        Log.d(TAG, "onActive: ");
+        runOnUiThread(() -> {
+          qrCode.setVisibility(View.GONE);
+        });
+      }
+
+      @Override
+      public void onFirstActive() {
+      }
+
+      @Override
+      public void onMQTTStatusChanged(int status) {
+
+        switch (status) {
+          case IoTSDKManager.STATUS_OFFLINE:
+            // 设备网络离线
+            break;
+          case IoTSDKManager.STATUS_MQTT_OFFLINE:
+            // 网络在线MQTT离线
+            break;
+          case IoTSDKManager.STATUS_MQTT_ONLINE:
+            // 网络在线MQTT在线
+
+            SharedPreferences sp = getSharedPreferences("event_cache", MODE_PRIVATE);
+
+            DPEvent[] events = IotUtil.ioTSDKManager.getEvents();
+
+            if (events != null) {
+              for (DPEvent event : events) {
+                if (event != null) {
+                  Log.d(TAG, event.toString());
+                }
+              }
+            }
+
+            loadCount();
+            break;
+        }
+      }
+    });
   }
 
   Handler mainHandler = new Handler() {
@@ -477,6 +513,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,
     LinearLayout_left_auto.setVisibility(View.VISIBLE);
     LinearLayout_left_user.setVisibility(View.GONE);
     SPUtil.set(this, SPUtil.AUTO, "1");
+    IotUtil.ioTSDKManager.sendDP(108, 3, 0);
   }
 
   private void changeHandUI() {
@@ -484,6 +521,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,
     LinearLayout_left_user.setVisibility(View.VISIBLE);
     LinearLayout_left_auto.setVisibility(View.GONE);
     SPUtil.set(this, SPUtil.AUTO, "0");
+    IotUtil.ioTSDKManager.sendDP(108, 3, 1);
   }
 
 
@@ -577,7 +615,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,
         UserActivity.luncher();
         break;
       case R.id.reset:
-        ioTSDKManager.reset();
+        IotUtil.reset();
     }
 
     // AlertUtil.show("按键提示");
@@ -705,9 +743,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,
     unregisterReceiver(networkConnectChangedReceiver);
     unregisterReceiver(blueChangedReceiver);
 
-    if (ioTSDKManager != null) {
-      ioTSDKManager.destroy();
-    }
+    IotUtil.destroy();
 
     com.tuya.smartai.iot_sdk.Log.close();
 
@@ -772,7 +808,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,
       @Override
       public void run() {
         ImageView_run.setImageResource(R.mipmap.run_dry_3x);
-
+        IotUtil.ioTSDKManager.sendDP(109, 3, 4);
       }
     });
 
@@ -809,7 +845,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,
       @Override
       public void run() {
         ImageView_run.setImageResource(R.mipmap.pee_3x);
-
+        IotUtil.ioTSDKManager.sendDP(109, 3, 2);
       }
     });
 
@@ -846,7 +882,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,
       @Override
       public void run() {
         ImageView_run.setImageResource(R.mipmap.defecate_3x);
-
+        IotUtil.ioTSDKManager.sendDP(109, 3, 1);
       }
     });
     ButtonChangeUtil.runAnimation(ImageView_run, TextView_run, this);
@@ -874,12 +910,19 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,
 
     final int n = MyDataUtil.countDataList(mysql, 2, T_USER, DateUtil.getStringDateShort());
     final int n2 = MyDataUtil.countDataList(mysql, 1, T_USER, DateUtil.getStringDateShort());
+
+    if (IotUtil.ioTSDKManager != null) {
+      IotUtil.ioTSDKManager.sendDP(110, 1, n);
+      IotUtil.ioTSDKManager.sendDP(111, 1, n2);
+    }
     runOnUiThread(new Runnable() {
       @Override
       public void run() {
 
         TextView_defeate_num.setText(n + "");
         TextView_pee_num.setText(n2 + "");
+
+
       }
     });
 
@@ -984,6 +1027,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,
         LinearLayout_tip_1.setVisibility(View.VISIBLE);
         //警报： 污水罐未装
         MediaPlayerUtil.play(R.raw.l1);
+        IotUtil.ioTSDKManager.sendDP(26, 3, 4);
       } else {
         LinearLayout_tip_1.setVisibility(View.GONE);
       }
@@ -995,7 +1039,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,
         LinearLayout_tip_2.setVisibility(View.VISIBLE);
         //警报：坐便器未正确安装
         MediaPlayerUtil.play(R.raw.l2);
-
+        IotUtil.ioTSDKManager.sendDP(26, 3, 2);
       } else {
         LinearLayout_tip_2.setVisibility(View.GONE);
       }
@@ -1006,7 +1050,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,
         LinearLayout_tip_3.setVisibility(View.VISIBLE);
         MyDataUtil.addRecordList(mysql, "警报：负压罐有水，请及时打开底部旋钮，将负压罐内水放完", T_USER);
         MediaPlayerUtil.play(R.raw.l3);
-
+        IotUtil.ioTSDKManager.sendDP(26, 3, 16);
       } else {
 
         LinearLayout_tip_3.setVisibility(View.GONE);
@@ -1018,6 +1062,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,
         LinearLayout_tip_4.setVisibility(View.VISIBLE);
         MyDataUtil.addRecordList(mysql, "警报：发现机器漏水，请立即断电，并联系售后", T_USER);
         MediaPlayerUtil.play(R.raw.l4);
+        IotUtil.ioTSDKManager.sendDP(26, 3, 128);
       } else {
         LinearLayout_tip_4.setVisibility(View.GONE);
       }
@@ -1028,6 +1073,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,
         LinearLayout_tip_5.setVisibility(View.VISIBLE);
         MyDataUtil.addRecordList(mysql, "警报：坐便器水溢出，请联系售后", T_USER);
         MediaPlayerUtil.play(R.raw.l5);
+        IotUtil.ioTSDKManager.sendDP(26, 3, 8);
       } else {
 
         LinearLayout_tip_5.setVisibility(View.GONE);
@@ -1038,7 +1084,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,
         LinearLayout_tip_7.setVisibility(View.VISIBLE);
         MyDataUtil.addRecordList(mysql, "警报：未正确穿戴", T_USER);
         MediaPlayerUtil.play(R.raw.l6);
-
+        IotUtil.ioTSDKManager.sendDP(26, 3, 1);
       } else {
 
         LinearLayout_tip_7.setVisibility(View.GONE);
@@ -1149,6 +1195,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,
         LinearLayout_tip_6.setVisibility(View.VISIBLE);
         MyDataUtil.addRecordList(mysql, "警报：被褥湿", T_USER);
         MediaPlayerUtil.play(R.raw.l14);
+        IotUtil.ioTSDKManager.sendDP(26, 3, 2048);
       } else {
         LinearLayout_tip_6.setVisibility(View.GONE);
       }
@@ -1337,6 +1384,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,
             @Override
             public void run() {
               ImageView_run.setImageResource(R.mipmap.run_dry_3x);
+              IotUtil.ioTSDKManager.sendDP(109, 3, 4);
             }
           });
           findCountDry();

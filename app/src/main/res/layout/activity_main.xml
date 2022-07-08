@@ -1206,10 +1206,10 @@
       <RelativeLayout
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_alignLeft="@id/TextView_defeate_num"
-        android:layout_alignTop="@id/TextView_defeate_num"
-        android:layout_alignRight="@id/TextView_pee_num"
         android:layout_alignBottom="@id/TextView_pee"
+        android:layout_alignLeft="@id/TextView_defeate_num"
+        android:layout_alignRight="@id/TextView_pee_num"
+        android:layout_alignTop="@id/TextView_defeate_num"
         android:background="@drawable/line" />
 
     </RelativeLayout>
@@ -1256,15 +1256,18 @@
     android:layout_height="wrap_content"
     android:layout_marginBottom="20dp"
     android:text="解绑设备"
-    android:visibility="gone"
     android:textAllCaps="false"
+    android:onClick="onClick"
     android:textColor="#ffffff" />
 
   <ImageView
     android:id="@+id/qrcode"
     android:layout_width="200dp"
     android:layout_height="200dp"
-    android:layout_centerInParent="true"
-    android:layout_margin="20dp" />
+    android:layout_marginTop="20dp"
+    android:layout_marginBottom="20dp"
+    android:layout_marginStart="20dp"
+    android:layout_marginEnd="20dp"
+    android:layout_centerInParent="true" />
 
 </RelativeLayout>

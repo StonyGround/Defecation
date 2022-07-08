@@ -38,6 +38,6 @@ ext {
     minSdkVersion = 19
     targetSdkVersion = 28
     versionCode = 3
-    versionName = "v1.0.3"
+    versionName = "1.0.3"
 //    ndkAbi = 'armeabi'//,'armeabi-v7a', 'arm64-v8a'
 }
