@@ -180,6 +180,7 @@ public class SerialportUtil {
         if (!sum.equals(str.substring(str.length()-2))) { return -3; }
 
           Log.e("收到数据","str==>"+str);
+        Log.d("--------", "<<---: "+str);
 
 
       //  byte[] temp = new byte[1];
@@ -280,6 +281,7 @@ public class SerialportUtil {
                         machineControl.sendCMD(mBuffer);
 
                         Log.e("数据","写入===>"+ StringToAscii.parseByte2HexStr(mBuffer));
+                        Log.d("--------", "--->>: "+StringToAscii.parseByte2HexStr(mBuffer));
                     } else {
                         return;
                     }

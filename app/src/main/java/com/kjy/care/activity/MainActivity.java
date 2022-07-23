@@ -616,6 +616,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,
         break;
       case R.id.reset:
         IotUtil.reset();
+        new Handler().postDelayed(new Runnable() {
+          @Override
+          public void run() {
+            System.exit(0);
+          }
+        },2000);
     }
 
     // AlertUtil.show("按键提示");
@@ -929,6 +935,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,
 
   }
 
+  // 警报指令
+  private boolean isTempWater_03 = false;
 
   /**
    * 解析命令
@@ -1013,6 +1021,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,
 
     }
 
+    // 警告
     if (hex.startsWith("FF04E5")) {
       //  FF04E50D  00  00 00 00 00 00 00 00 00 00 00 00 00 00 sum
       //FF04E5 0D(数据长度)  00  00 00 00 00 00 00 00 00 00 00 00 00 00  sum(校验和)
@@ -1153,15 +1162,23 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,
 
       if (tempWater_03.equals("00")) {
         //满桶
-        ButtonChangeUtil.changeWaterClean(ImageView_water_clean, 3, this);
-        ButtonChangeUtil.changeShowTips(RelativeLayout_tips, RelativeLayout_tips_none,
-            TextView_tips, "警报：清水桶已满，请停止加水", this);
-        MyDataUtil.addRecordList(mysql, "警报：清水桶已满，请停止加水", T_USER);
-        MediaPlayerUtil.play(R.raw.l13_2);
+        if (!isTempWater_03) {
+          isTempWater_03 = true;
+          ButtonChangeUtil.changeWaterClean(ImageView_water_clean, 3, this);
+//          ButtonChangeUtil.changeShowTips(RelativeLayout_tips, RelativeLayout_tips_none,
+//              TextView_tips, "警报：清水桶已满，请停止加水", this);
+          TextView_tips.setText("警报：清水桶已满，请停止加水");
+          RelativeLayout_tips.setVisibility(View.VISIBLE);
+          RelativeLayout_tips_none.setVisibility(View.GONE);
 
+          MyDataUtil.addRecordList(mysql, "警报：清水桶已满，请停止加水", T_USER);
+          MediaPlayerUtil.play(R.raw.l13_2);
+        }
       } else {
         //空桶
-
+        isTempWater_03 = false;
+        RelativeLayout_tips.setVisibility(View.GONE);
+        RelativeLayout_tips_none.setVisibility(View.VISIBLE);
         if (tempWater_02.equals("00")) {
           //中水位
           ButtonChangeUtil.changeWaterClean(ImageView_water_clean, 2, this);
